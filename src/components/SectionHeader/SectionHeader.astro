@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string,
+  linkLabel: string,
+  linkHref: string,
+  linkContext?: string
+}
+const { title, linkLabel, linkHref, linkContext} = Astro.props;
+---
+<div class="border-t border-ink/20 pt-3 mb-8 flex justify-between items-baseline">
+  <h2 class="font-serif font-light text-[26px]">{title}</h2>
+  <a href={linkHref} class="text-[13px] font-medium uppercase tracking-[0.04em]">
+    {linkLabel}
+    {linkContext && <span class="sr-only">{linkContext}</span>}
+    <span aria-hidden="true"> →</span>
+  </a>
+</div>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projets — Ahmadou Gueye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#e3dbcf}
+a{color:#1a1714;text-decoration:none}a:hover{color:#c26a12}
+.nav-grille{display:grid;grid-template-columns:1fr auto;grid-template-areas:"nom contact" "liens liens";column-gap:24px;row-gap:10px;align-items:end}
+.nav-nom{grid-area:nom;padding:6px 0}
+.nav-contact{grid-area:contact;font-size:18px;line-height:1;padding:6px 0}
+.nav-liens{grid-area:liens;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
+.nav-lien{display:block;padding:6px 0;border-bottom:1px solid rgba(26,23,20,.2)}
+.nav-lien[aria-current="page"]{border-bottom-color:#1a1714}
+@media (min-width:640px){.nav-grille{grid-template-columns:auto 1fr auto;grid-template-areas:"nom liens contact";column-gap:32px}.nav-liens{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div style="min-height: 100vh; background: #e3dbcf; padding: 10px; box-sizing: border-box; color: #1a1714; font-family: 'Inter', system-ui, sans-serif; font-size: 15px; line-height: 1.6">
+<div style="background: #f4efe6; min-height: calc(100vh - 20px); padding: 8px 28px 96px; box-sizing: border-box">
+
+<header style="position: sticky; top: 0; z-index: 10; background: #f4efe6; padding: 16px 0 12px; font-size: 14px">
+<div class="nav-grille">
+<a href="accueil.html" class="nav-nom">Ahmadou Gueye</a>
+<nav aria-label="Navigation principale" class="nav-liens">
+<a href="projets.html" aria-current="page" class="nav-lien">Projets</a>
+<a href="accueil.html#a-propos" class="nav-lien">À propos</a>
+<a href="[LIEN CV]" class="nav-lien">CV</a>
+<a href="mailto:[TON EMAIL]" class="nav-lien">Contact</a>
+</nav>
+<a href="mailto:[TON EMAIL]" aria-label="Contact par email" class="nav-contact">@</a>
+</div>
+</header>
+
+<main>
+<h1 style="margin: 72px 0 0; font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 40px; line-height: 1.15; letter-spacing: -0.01em">Projets<br><span style="color: #8a847c">Du e-commerce à l'énergie, en Vue et en React</span></h1>
+
+<div style="margin-top: 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px 16px">
+
+<a href="projet-accor.html" style="display: block">
+<div style="aspect-ratio: 4 / 5; color: #f4efe6; display: grid; place-items: center; border-radius: 2px; background: #1a1714">
+<span style="font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 48px; letter-spacing: -0.01em; text-align: center; padding: 0 20px">Accor</span>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 14px; color: #5f5a53">
+<span>Sites à grande échelle, Core Web Vitals →</span>
+<span>2024–2026</span>
+</div>
+</a>
+
+<a href="#" style="display: block">
+<div style="aspect-ratio: 4 / 5; color: #f4efe6; display: grid; place-items: center; border-radius: 2px; background: #c26a12">
+<span style="font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 48px; letter-spacing: -0.01em; text-align: center; padding: 0 20px">Savelys</span>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 14px; color: #5f5a53">
+<span>Design System, groupe Engie →</span>
+<span>[ANNÉE]</span>
+</div>
+</a>
+
+<a href="#" style="display: block">
+<div style="aspect-ratio: 4 / 5; color: #f4efe6; display: grid; place-items: center; border-radius: 2px; background: #c26a12">
+<span style="font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 48px; letter-spacing: -0.01em; text-align: center; padding: 0 20px">Dalkia</span>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 14px; color: #5f5a53">
+<span>Dataviz Vue.js et cadrage produit →</span>
+<span>[ANNÉE]</span>
+</div>
+</a>
+
+<a href="#" style="display: block">
+<div style="aspect-ratio: 4 / 5; color: #f4efe6; display: grid; place-items: center; border-radius: 2px; background: #1a1714">
+<span style="font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 48px; letter-spacing: -0.01em; text-align: center; padding: 0 20px">Maisons du Monde</span>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 14px; color: #5f5a53">
+<span>Vue, Nuxt et GraphQL →</span>
+<span>[ANNÉE]</span>
+</div>
+</a>
+
+<a href="#" style="display: block">
+<div style="aspect-ratio: 4 / 5; color: #f4efe6; display: grid; place-items: center; border-radius: 2px; background: #1a1714">
+<span style="font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 48px; letter-spacing: -0.01em; text-align: center; padding: 0 20px">Nestlé Waters</span>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 14px; color: #5f5a53">
+<span>React et lecteur vidéo YouTube sur mesure →</span>
+<span>2019</span>
+</div>
+</a>
+
+<a href="#" style="display: block">
+<div style="aspect-ratio: 4 / 5; color: #f4efe6; display: grid; place-items: center; border-radius: 2px; background: #c26a12">
+<span style="font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 48px; letter-spacing: -0.01em; text-align: center; padding: 0 20px">Clemenvilla</span>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 14px; color: #5f5a53">
+<span>Vue.js et Drupal headless →</span>
+<span>2017–2018</span>
+</div>
+</a>
+
+</div>
+
+<footer style="margin-top: 120px; border-top: 1px dashed rgba(26,23,20,0.35); padding-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px">
+<a href="mailto:[TON EMAIL]">Email</a>
+<a href="[LIEN LINKEDIN]">LinkedIn</a>
+<a href="[LIEN GITHUB]">GitHub</a>
+<span style="margin-left: auto; color: #5f5a53">Paris</span>
+</footer>
+</main>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+---
+import SiteFooter from '@/components/Footer/SiteFooter.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="p-2.5">
+    <div class="min-h-[calc(100vh-20px)] bg-paper px-7 pt-2 pb-24">
+      <SiteHeader />
+      <slot />
+      <SiteFooter/>
+    </div>
+  </body>
+</html>

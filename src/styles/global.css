@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --color-frame: #e3dbcf;
+  --color-paper: #f4efe6;
+  --color-ink: #1a1714;
+  --color-ochre: #c26a12;
+  --color-muted: #8a847c;
+  --color-muted-strong: #5f5a53;
+
+  --font-serif: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-frame font-sans text-[15px] leading-[1.6] text-ink;
+  }
+
+  a {
+    @apply text-ink no-underline hover:text-ochre;
+  }
+}
