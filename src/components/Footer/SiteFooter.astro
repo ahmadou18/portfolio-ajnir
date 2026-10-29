@@ -1,0 +1,19 @@
+---
+const socialLinks = [
+  { label: "Email", href: "mailto:[TON EMAIL]" },
+  { label: "LinkedIn", href: "[LIEN LINKEDIN]" },
+  { label: "GitHub", href: "[LIEN GITHUB]" },
+];
+---
+<footer class="pt-4 mt-30 border-t border-ink/35 text-sm">
+    <ul class="flex flex-wrap gap-x-6 gap-y-2">
+        {socialLinks.map(({ label, href }) => (
+            <li>
+                <a href={href}>
+                    {label}
+                </a>
+            </li>
+        ))}
+      <li class="ml-auto text-muted-strong">Paris</li>
+    </ul>
+</footer>

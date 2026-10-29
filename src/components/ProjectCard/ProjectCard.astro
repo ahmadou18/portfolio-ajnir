@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  years: string;
+  href: string;
+  color: "ink" | "ochre";
+  image?: ImageMetadata;
+}
+const { title, subtitle, years, href, color, image } = Astro.props;
+
+const backgroundByColor: Record<Props["color"], string> = {
+  ink: "bg-ink",
+  ochre: "bg-ochre",
+};
+---
+<a href={href} class="block group">
+    <div class:list={[
+        "relative grid aspect-[4/5] place-items-center overflow-hidden rounded-xs text-paper",
+        !image && backgroundByColor[color],
+      ]}>
+        {image && (
+          <>
+            <Image src={image} alt="" class="absolute inset-0 size-full object-cover" />
+            <div class="absolute inset-0 bg-ink/40" aria-hidden="true"></div>
+          </>
+        )}
+        <span class="relative font-serif font-light text-5xl text-center px-5">{title}</span>
+    </div>
+    <div class="mt-3 flex justify-between gap-4 text-sm text-muted-strong transition-colors group-hover:text-ochre">
+        <span>{subtitle} <span aria-hidden="true">→</span></span>
+        <span>{years}</span>
+    </div>
+</a>
+
+

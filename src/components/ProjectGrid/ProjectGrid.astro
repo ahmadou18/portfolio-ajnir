@@ -1,0 +1,21 @@
+---
+import ProjectCard from "@/components/ProjectCard/ProjectCard.astro";
+import type { Project } from "@/data/projects";
+
+interface Props {
+  projects: Project[];
+}
+const { projects } = Astro.props;
+
+function getCheckerColor(index: number): "ink" | "ochre" {
+  const row = Math.floor(index / 2);
+  const column = index % 2;
+
+  return (row + column) % 2 === 0 ? "ink" : "ochre";
+}
+---
+<div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-x-4 gap-y-10">
+  {projects.map((project, index) => (
+    <ProjectCard {...project} color={getCheckerColor(index)} />
+  ))}
+</div>
