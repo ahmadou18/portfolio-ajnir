@@ -1,0 +1,58 @@
+---
+import { render } from "astro:content";
+import { getSortedProjects } from "@/lib/projects";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeading from "@/components/Heading/PageHeading.astro";
+import ProjectCover from "@/components/ProjectCover/ProjectCover.astro";
+
+export async function getStaticPaths() {
+  const projects = await getSortedProjects();
+
+  return projects.map((project, index) => ({
+    params: { slug: project.id },
+    props: {
+      project,
+      nextProject: projects[(index + 1) % projects.length],
+    },
+  }));
+}
+
+const { project, nextProject } = Astro.props;
+const { Content } = await render(project);
+---
+<BaseLayout title={`${project.data.title} — Ahmadou Gueye`} description={project.data.subtitle}>
+  <article>
+    <PageHeading title={project.data.title} subtitle={project.data.subtitle} />
+    <div class="mt-12">
+      <ProjectCover  
+        variant="hero"
+        title={project.data.title}
+        image={project.data.image}
+        color="ink"
+        />
+    </div>
+    <dl class="mt-6 grid grid-cols-3 gap-4 border-t border-dashed border-ink/35 pt-4 text-sm">
+      <div>
+        <dt class="text-muted-strong">Année</dt>
+        <dd>{project.data.years}</dd>
+      </div>
+      <div>
+        <dt class="text-muted-strong">Rôle</dt>
+        <dd>{project.data.role}</dd>
+      </div>
+      <div>
+        <dt class="text-muted-strong">Stack</dt>
+        <dd>{project.data.stack.join(", ")}</dd>
+      </div>
+    </dl>
+
+    <div class="project-content mt-16 max-w-[860px]">
+      <Content />
+    </div>
+
+    <nav aria-label="Navigation entre projets" class="mt-24 border-t border-dashed border-ink/35 pt-4 flex flex-wrap justify-between gap-4 text-sm">
+        <a href="/projects"><span aria-hidden="true">←</span> Tous les projets</a>
+        <a href={`/projects/${nextProject.id}`}>Projet suivant : {nextProject.data.title} <span aria-hidden="true">→</span></a>
+    </nav>
+  </article>
+</BaseLayout>

@@ -3,6 +3,7 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/fraunces";
 @import "@fontsource-variable/inter";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-frame: #e3dbcf;
@@ -23,5 +24,23 @@
 
   a {
     @apply text-ink no-underline hover:text-ochre;
+  }
+}
+
+
+@layer components {
+  .project-content {
+    & h2 {
+      @apply mt-12 mb-3 font-serif text-[22px] font-normal;
+    }
+    & h2:first-child {
+      @apply mt-0;
+    }
+    & p + p {
+      @apply mt-3;
+    }
+    & ul {
+      @apply pl-2;
+    }
   }
 }
