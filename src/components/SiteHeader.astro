@@ -1,5 +1,6 @@
 ---
 import Logo from "@/assets/logo.svg";
+import { site } from "@/config";
 
 const navigationLinks = [
   { label: "Projets", href: "/projects" },
@@ -20,7 +21,7 @@ function isCurrentPage(href: string) {
   <div class="grid grid-cols-[1fr_auto] items-end gap-x-6 gap-y-2.5 sm:grid-cols-[auto_1fr_auto] sm:gap-x-8">
     <a
       href="/"
-      aria-label="Ahmadou Gueye, accueil"
+      aria-label={`${site.name}, accueil`}
       class="group order-1 flex items-center gap-2.5 py-1.5"
     >
       <Logo
@@ -49,7 +50,7 @@ function isCurrentPage(href: string) {
     </nav>
 
     <a
-      href="mailto:ahmadou.gue@gmail.com"
+      href={`mailto:${site.email}`}
       aria-label="Contact par email"
       class="col-start-2 row-start-1 py-1.5 text-[18px] leading-none sm:col-start-3"
     >

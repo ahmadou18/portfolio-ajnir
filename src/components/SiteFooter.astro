@@ -1,11 +1,11 @@
 ---
 import CopyEmailButton from "@/components/CopyEmailButton.astro";
-const email = "ahmadou.gue@gmail.com";
+import { site } from "@/config";
 
 const socialLinks = [
-  { label: email, href: `mailto:${email}`, copyValue: email },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/ahmadou-gueye" },
-  { label: "GitHub", href: "https://github.com/ahmadou18" },
+  { label: site.email, href: `mailto:${site.email}`, copyValue: site.email },
+  { label: "LinkedIn", href: site.linkedinUrl },
+  { label: "GitHub", href: site.githubUrl },
 ];
 ---
 
