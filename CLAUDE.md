@@ -47,7 +47,8 @@ src/
     CopyEmailButton/CopyEmailButton.astro   # bouton « Copier l'email » (script natif)
   content/
     projects/*.md               # un fichier par projet
-  content.config.ts             # schéma de la collection projects
+    experiences.yaml            # expériences du CV (référencent les projets)
+  content.config.ts             # schémas des collections projects et experiences
   layouts/
     BaseLayout.astro
   lib/
@@ -56,6 +57,7 @@ src/
     index.astro
     projects/index.astro
     projects/[slug].astro
+    resume/index.astro          # CV
   styles/global.css
 ```
 

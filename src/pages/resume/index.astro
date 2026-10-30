@@ -1,0 +1,124 @@
+---
+import { getCollection, getEntries } from "astro:content";
+import PageHeading from "@/components/Heading/PageHeading.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const experienceEntries = (await getCollection("experiences")).toSorted(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const experiences = await Promise.all(
+  experienceEntries.map(async (experience) => ({
+    ...experience.data,
+    linkedProjects: await getEntries(experience.data.projects),
+  })),
+);
+
+const skillGroups = [
+  {
+    title: "Front-end",
+    skills: "Vue 3, Nuxt, React, Next.js, Astro, TypeScript, JavaScript",
+  },
+  {
+    title: "Interface",
+    skills: "Tailwind CSS, Sass, Nuxt UI, Design Systems, Storybook",
+  },
+  {
+    title: "Qualité",
+    skills: "Vitest, Jest, accessibilité (WCAG), Core Web Vitals",
+  },
+  {
+    title: "CMS et back-end",
+    skills: "Strapi, Sanity, Prismic, Drupal, Python / Flask, Laravel, NodeJS",
+  },
+  { title: "Outils", skills: "GitLab CI, Docker, Figma" },
+];
+
+const sectionTitleClass =
+  "border-t border-ink/20 pt-3 font-serif text-[26px] font-light";
+---
+
+<BaseLayout
+  title="CV — Ahmadou Gueye, développeur front-end à Paris"
+  description="Parcours d'Ahmadou Gueye, développeur front-end à Paris : Accor, Dalkia, Maisons du Monde, Savelys. Vue 3, Nuxt, React, Astro."
+>
+  <PageHeading title="CV" subtitle="Développeur front-end à Paris" />
+
+  <p class="mt-10">
+    <a
+      href="/CV_Gueye_Ahmadou.pdf"
+      download
+      class="inline-flex items-center gap-2 border-b border-ink pb-1 text-[13px] font-medium tracking-[0.04em] uppercase"
+    >
+      Télécharger le PDF <span aria-hidden="true">↓</span>
+    </a>
+  </p>
+
+  <section class="mt-18">
+    <h2 class={sectionTitleClass}>Expériences</h2>
+    <ol class="mt-8">
+      {experiences.map(({ company, years, role, description, linkedProjects }) => (
+        <li class="grid gap-1 border-t border-ink/20 py-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6">
+          <span class="text-[14px] text-muted-strong">{years}</span>
+          <div>
+            <h3 class="font-serif text-[22px] leading-[1.3]">{company}</h3>
+            <p class="mt-0.5 text-[14px] text-muted-strong">{role}</p>
+            <p class="mt-2 max-w-[620px]">{description}</p>
+            {linkedProjects.length > 0 && (
+              <p class="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[14px]">
+                {linkedProjects.map((project) => (
+                  <a href={`/projects/${project.id}`}>
+                    {linkedProjects.length > 1 ? (
+                      project.data.title
+                    ) : (
+                      <>
+                        Voir le projet
+                        <span class="sr-only"> {project.data.title}</span>
+                      </>
+                    )}
+                    <span aria-hidden="true"> →</span>
+                  </a>
+                ))}
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="mt-24">
+    <h2 class={sectionTitleClass}>Compétences</h2>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-6">
+      {skillGroups.map(({ title, skills }) => (
+        <div>
+          <h3 class="text-[14px] font-medium">{title}</h3>
+          <p class="mt-1 text-muted-strong">{skills}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-24">
+    <h2 class={sectionTitleClass}>Formation</h2>
+    <div class="mt-8 grid gap-1 border-t border-ink/20 py-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6">
+      <span class="text-[14px] text-muted-strong">2018</span>
+      <div>
+        <h3 class="font-serif text-[22px] leading-[1.3]">
+          Développeur logiciel, niveau II (Bac+3/4)
+        </h3>
+        <p class="mt-0.5 text-[14px] text-muted-strong">
+          Simplon.co, Paris · Formation en alternance
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-24">
+    <h2 class={sectionTitleClass}>Langues</h2>
+    <ul class="mt-8 space-y-1">
+      <li>Français <span class="text-muted-strong">: langue maternelle</span></li>
+      <li>Anglais <span class="text-muted-strong">: professionnel</span></li>
+    </ul>
+  </section>
+</BaseLayout>
