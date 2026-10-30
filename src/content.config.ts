@@ -6,13 +6,13 @@ const projects = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
   schema: ({ image }) =>
     z.object({
-        title: z.string(),
-        subtitle: z.string(),
-        years: z.coerce.string(),
-        role: z.string(),
-        stack: z.array(z.string()),
-        image: image().optional(),
-        order: z.number()
+      title: z.string(),
+      subtitle: z.string(),
+      years: z.coerce.string(),
+      role: z.string(),
+      stack: z.array(z.string()),
+      image: z.union([image(), z.string().url()]).optional(),
+      order: z.number(),
     }),
 });
 

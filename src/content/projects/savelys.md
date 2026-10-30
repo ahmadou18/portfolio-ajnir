@@ -5,6 +5,7 @@ years: "2026"
 role: Développeur front-end
 stack: [Nuxt, Nuxt UI, Vue.js, JavaScript, Strapi, Storybook, Vitest, GitLab CI]
 order: 2
+image: https://images.unsplash.com/photo-1710800918100-e9c6576a976f?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
 ---
 
 ## Contexte

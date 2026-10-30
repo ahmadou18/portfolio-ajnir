@@ -3,8 +3,21 @@ title: Dalkia
 subtitle: Cartographie pour simuler l'extension des réseaux de chaleur
 years: 2022–2024
 role: Responsable front-end
-stack: [Vue 2, Vue 3, ArcGIS, Pinia, Axios, Tailwind CSS, Vitest, Python, Flask, SQLAlchemy]
+stack:
+  [
+    Vue 2,
+    Vue 3,
+    ArcGIS,
+    Pinia,
+    Axios,
+    Tailwind CSS,
+    Vitest,
+    Python,
+    Flask,
+    SQLAlchemy,
+  ]
 order: 4
+image: https://images.unsplash.com/photo-1681879804167-86f7376d1654?q=80&w=1065&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
 ---
 
 ## Contexte

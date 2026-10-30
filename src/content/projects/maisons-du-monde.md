@@ -5,6 +5,7 @@ years: 2020–2021
 role: Développeur front-end
 stack: [Vue.js, Nuxt, GraphQL, Prismic, Sass, Bootstrap, Magento]
 order: 5
+image: https://images.unsplash.com/photo-1581784878214-8d5596b98a01?q=80&w=1015&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
 ---
 
 ## Contexte

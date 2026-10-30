@@ -4,6 +4,7 @@ subtitle: Site vitrine bilingue français-turc
 years: "2026"
 role: Développeur front-end
 stack: [Next.js, React, TypeScript, Sanity, Vercel]
+image: https://images.unsplash.com/photo-1711655803317-f29e37c72068?q=80&w=3184&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
 order: 3
 ---
 

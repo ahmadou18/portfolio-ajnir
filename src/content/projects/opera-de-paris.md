@@ -4,6 +4,7 @@ subtitle: Refonte de la page Programmation et billets
 years: "2019"
 role: Développeur front-end
 stack: [Laravel, Blade, JavaScript, HTML, CSS]
+image: https://images.unsplash.com/photo-1778975144946-032638826f23?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
 order: 7
 ---
 

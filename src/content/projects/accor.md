@@ -5,7 +5,7 @@ years: 2024–2026
 role: Développeur front-end
 stack: [Vue 3, JavaScript, AEM, Storybook, Jest, Vitest]
 order: 1
-image: ../../assets/projects/accor/accor.jpg
+image: https://images.unsplash.com/photo-1690935986319-c11e6cae84f7?q=80&w=2961&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
 ---
 
 ## Contexte
