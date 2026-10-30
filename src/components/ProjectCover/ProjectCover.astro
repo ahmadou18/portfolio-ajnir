@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+export type CoverColor = "ink" | "ochre";
+
+interface Props {
+  title: string;
+  image?: ImageMetadata;
+  color: CoverColor;
+  variant: "card" | "hero";
+}
+const { title, image, color, variant } = Astro.props;
+
+const backgroundByColor: Record<CoverColor, string> = {
+  ink: "bg-ink",
+  ochre: "bg-ochre",
+};
+
+const classesByVariant: Record<Props["variant"], { frame: string; title: string }> = {
+  card: { frame: "aspect-[4/5]", title: "text-5xl" },
+  hero: { frame: "aspect-[16/10] sm:aspect-[3/1]", title: "text-5xl sm:text-7xl" },
+};
+---
+<div class:list={[
+  "relative grid place-items-center overflow-hidden rounded-xs text-paper",
+  classesByVariant[variant].frame,
+  !image && backgroundByColor[color],
+]}>
+  {image && (
+    <>
+      <Image src={image} alt="" class="absolute inset-0 size-full object-cover" />
+      <div class="absolute inset-0 bg-ink/40" aria-hidden="true"></div>
+    </>
+  )}
+  <span class:list={["relative px-5 text-center font-serif font-light", classesByVariant[variant].title]}>
+    {title}
+  </span>
+</div>
