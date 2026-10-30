@@ -13,11 +13,9 @@ Ce projet sert aussi à **apprendre Astro** (formation guidée en modules). Ahma
 ## Stack
 
 - **Astro** (rendu statique)
-- **React** uniquement pour les îlots interactifs
 - **Tailwind CSS v4** (tokens dans `@theme`, pas de `tailwind.config`)
-- **shadcn CLI** pour installer les composants **Fancy Components** (fancycomponents.dev), qui reposent sur `motion`
 - Polices : `@fontsource-variable/fraunces` (serif) et `@fontsource-variable/inter` (sans)
-- Alias `@/*` → `./src/*` (requis par shadcn)
+- Alias `@/*` → `./src/*`
 
 ## Commandes
 
@@ -25,7 +23,6 @@ Ce projet sert aussi à **apprendre Astro** (formation guidée en modules). Ahma
 npm run dev       # serveur de dev
 npm run build     # build statique dans dist/
 npm run preview   # prévisualiser le build
-npx shadcn@latest add <url-registre-fancy>   # ajouter un composant Fancy
 ```
 
 ## Design
@@ -47,8 +44,7 @@ src/
     ProjectGrid/ProjectGrid.astro     # calcule la couleur en damier
     ProjectCard/ProjectCard.astro
     ProjectCover/ProjectCover.astro   # bloc couleur ou image (variant card | hero)
-    ui/                         # composants shadcn
-    fancy/                      # composants Fancy installés via shadcn (React)
+    CopyEmailButton/CopyEmailButton.astro   # bouton « Copier l'email » (script natif)
   content/
     projects/*.md               # un fichier par projet
   content.config.ts             # schéma de la collection projects
@@ -56,7 +52,6 @@ src/
     BaseLayout.astro
   lib/
     projects.ts                 # getSortedProjects()
-    utils.ts                    # cn() généré par shadcn
   pages/
     index.astro
     projects/index.astro
@@ -80,8 +75,7 @@ Pas de couleur dans les données : `ProjectGrid` la calcule selon la position (d
 
 ## Conventions
 
-- **`.astro` par défaut.** React (`.tsx`) uniquement si le composant a besoin de JS côté client.
-- Toujours une directive explicite sur un îlot React : `client:load` (au-dessus de la ligne de flottaison), `client:idle` (survol, nav), `client:visible` (plus bas dans la page). Sans directive, aucune animation.
+- **Tout en `.astro`**, pas de framework UI. Animations en CSS ; JS uniquement pour une fonctionnalité utile, via une balise `<script>` dans le composant (bundlée et dédupliquée par Astro).
 - **Jamais de classe Tailwind construite dynamiquement** (`` `bg-${color}` ``) : utiliser un objet de correspondance avec les classes complètes.
 - Props typées avec `interface Props` dans le frontmatter.
 - **Nommage du code en anglais**, toujours : composants, fonctions, props, variables, tokens, collections. Des noms qui décrivent clairement le rôle du composant ou ce que fait la fonction (`ProjectCard`, `SiteHeader`, `isCurrentPage`), jamais de noms vagues (`Block`, `Item`, `handle`, `data`).
@@ -89,8 +83,8 @@ Pas de couleur dans les données : `ProjectGrid` la calcule selon la position (d
 
 ## Qualité
 
-- **Accessibilité** : respecter `prefers-reduced-motion` pour toute animation (`motion-safe:` / `motion-reduce:` côté Tailwind, `useReducedMotion` côté motion). Contrastes suffisants, liens explicites, `lang="fr"`.
-- **Performance** : viser zéro JS sur les pages sans îlot. Vérifier le nombre de fichiers JS dans `dist/` après build.
+- **Accessibilité** : respecter `prefers-reduced-motion` pour toute animation (`motion-safe:` / `motion-reduce:` côté Tailwind, `@media (prefers-reduced-motion: reduce)` en CSS). Contrastes suffisants, liens explicites, `lang="fr"`.
+- **Performance** : viser zéro JS hors fonctionnalités utiles. Vérifier le nombre de fichiers JS dans `dist/` après build.
 - **SEO** : `title` et `description` uniques par page via les props du `Layout`.
 
 ## Programme de formation
@@ -98,7 +92,7 @@ Pas de couleur dans les données : `ProjectGrid` la calcule selon la position (d
 1. ✅ Setup + premier îlot Fancy
 2. ✅ Structure : layout, nav, composants `.astro` vs `.tsx`
 3. ⏳ Content Collections + route dynamique `projects/[slug].astro`
-4. Micro-interactions Fancy et stratégie d'hydratation
+4. Micro-interactions en CSS et scripts natifs Astro
 5. SEO/GEO : meta, Open Graph, sitemap, JSON-LD `Person`, `llms.txt`
 6. Perf et accessibilité (Lighthouse, `prefers-reduced-motion`)
 7. Déploiement
