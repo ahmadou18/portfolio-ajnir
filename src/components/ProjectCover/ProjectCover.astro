@@ -17,9 +17,13 @@ const backgroundByColor: Record<CoverColor, string> = {
   ochre: "bg-ochre",
 };
 
-const classesByVariant: Record<Props["variant"], { frame: string; title: string }> = {
-  card: { frame: "aspect-[4/5]", title: "text-5xl" },
-  hero: { frame: "aspect-[16/10] sm:aspect-[3/1]", title: "text-5xl sm:text-7xl" },
+const classesByVariant: Record<Props["variant"], { frame: string; title: string; image: string }> = {
+  card: {
+    frame: "aspect-[4/5]",
+    title: "text-5xl",
+    image: "motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105",
+  },
+  hero: { frame: "aspect-[16/10] sm:aspect-[3/1]", title: "text-5xl sm:text-7xl", image: "" },
 };
 ---
 <div class:list={[
@@ -29,7 +33,7 @@ const classesByVariant: Record<Props["variant"], { frame: string; title: string 
 ]}>
   {image && (
     <>
-      <Image src={image} alt="" class="absolute inset-0 size-full object-cover" />
+      <Image src={image} alt="" class:list={["absolute inset-0 size-full object-cover", classesByVariant[variant].image]} />
       <div class="absolute inset-0 bg-ink/40" aria-hidden="true"></div>
     </>
   )}

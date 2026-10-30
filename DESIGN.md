@@ -93,7 +93,7 @@ h1 en deux lignes : la 1re en `ink`, la 2e en `muted`.
 - **Sans image** (cas par défaut, missions sous NDA) : fond `ink` ou `ochre` (reçu de `ProjectGrid`), nom du client centré en `paper`, Fraunces 300, 48px, padding horizontal 20px
 - **Avec image** (optionnelle) : l'image remplit le rectangle (`object-cover`) avec `alt=""` (le nom du client est déjà dans le lien), recouverte d'un voile `ink` à 40 % pour le contraste. Le nom du client reste centré par-dessus, identique au cas sans image
 - Légende dessous, 14px, `muted-strong`, en flex `justify-between` : sous-titre suivi de `→` à gauche, années à droite
-- Survol : la légende passe en `ochre` (`group` / `group-hover`)
+- Survol et focus clavier : la légende passe en `ochre`, l'image zoome légèrement (voir Animations)
 
 ### ProjectGrid
 
