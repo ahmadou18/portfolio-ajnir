@@ -37,34 +37,46 @@ npx shadcn@latest add <url-registre-fancy>   # ajouter un composant Fancy
 ## Structure
 
 ```
-DESIGN.md               # référence visuelle
+DESIGN.md                       # référence visuelle
 src/
   components/
     SiteHeader.astro
-    PageHeading.astro
-    ProjectCard.astro
-    fancy/              # composants Fancy installés via shadcn (React)
+    Footer/SiteFooter.astro
+    Heading/PageHeading.astro
+    SectionHeader/SectionHeader.astro
+    ProjectGrid/ProjectGrid.astro     # calcule la couleur en damier
+    ProjectCard/ProjectCard.astro
+    ProjectCover/ProjectCover.astro   # bloc couleur ou image (variant card | hero)
+    ui/                         # composants shadcn
+    fancy/                      # composants Fancy installés via shadcn (React)
   content/
-    projects/*.md       # un fichier par projet (module 3)
+    projects/*.md               # un fichier par projet
+  content.config.ts             # schéma de la collection projects
   layouts/
     BaseLayout.astro
-  lib/utils.ts          # cn() généré par shadcn
+  lib/
+    projects.ts                 # getSortedProjects()
+    utils.ts                    # cn() généré par shadcn
   pages/
     index.astro
-    projets/index.astro
-    projets/[slug].astro
+    projects/index.astro
+    projects/[slug].astro
   styles/global.css
 ```
 
-### Frontmatter d'un projet (cible)
+### Frontmatter d'un projet
 
 ```yaml
 title: Accor
 subtitle: Sites à grande échelle, Core Web Vitals
 years: 2024–2026
+role: Développeur front-end
 stack: [Vue 3, AEM]
-color: ink   # ink | ochre
+order: 2                  # ordre d'affichage
+image: ../../assets/projects/accor/accor.jpg   # optionnel
 ```
+
+Pas de couleur dans les données : `ProjectGrid` la calcule selon la position (damier `ink` / `ochre`).
 
 ## Conventions
 
@@ -73,7 +85,7 @@ color: ink   # ink | ochre
 - **Jamais de classe Tailwind construite dynamiquement** (`` `bg-${color}` ``) : utiliser un objet de correspondance avec les classes complètes.
 - Props typées avec `interface Props` dans le frontmatter.
 - **Nommage du code en anglais**, toujours : composants, fonctions, props, variables, tokens, collections. Des noms qui décrivent clairement le rôle du composant ou ce que fait la fonction (`ProjectCard`, `SiteHeader`, `isCurrentPage`), jamais de noms vagues (`Block`, `Item`, `handle`, `data`).
-- **Contenu du site en français** (textes, URL comme `/projets`, `alt`, `aria-label`).
+- **Contenu du site en français** (textes, `alt`, `aria-label`). Les URL suivent le nom des fichiers, en anglais (`/projects`).
 
 ## Qualité
 
@@ -84,8 +96,8 @@ color: ink   # ink | ochre
 ## Programme de formation
 
 1. ✅ Setup + premier îlot Fancy
-2. ⏳ Structure : layout, nav, composants `.astro` vs `.tsx` (exercice en cours)
-3. Content Collections + route dynamique `projets/[slug].astro`
+2. ✅ Structure : layout, nav, composants `.astro` vs `.tsx`
+3. ⏳ Content Collections + route dynamique `projects/[slug].astro`
 4. Micro-interactions Fancy et stratégie d'hydratation
 5. SEO/GEO : meta, Open Graph, sitemap, JSON-LD `Person`, `llms.txt`
 6. Perf et accessibilité (Lighthouse, `prefers-reduced-motion`)
