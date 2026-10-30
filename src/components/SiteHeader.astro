@@ -1,4 +1,6 @@
 ---
+import Logo from "@/assets/logo.svg";
+
 const navigationLinks = [
   { label: 'Projets', href: '/projects' },
   { label: 'À propos', href: '/#a-propos' },
@@ -16,7 +18,9 @@ function isCurrentPage(href: string) {
 
 <header class="sticky top-0 z-10 bg-paper pt-4 pb-3 text-[14px]">
   <div class="grid grid-cols-[1fr_auto] items-end gap-x-6 gap-y-2.5 sm:grid-cols-[auto_1fr_auto] sm:gap-x-8">
-    <a href="/" class="py-1.5">Ahmadou Gueye</a>
+    <a href="/" aria-label="Ahmadou Gueye, accueil" class="group order-1 flex items-center gap-2.5 py-1.5">
+      <Logo class="logo-trace h-[22px] w-auto stroke-[12] text-ink" aria-hidden="true" />
+    </a>
 
     <nav aria-label="Navigation principale" class="col-span-2 row-start-2 sm:col-span-1 sm:col-start-2 sm:row-start-1">
       <ul class="grid grid-cols-2 gap-x-6 sm:grid-cols-4">
