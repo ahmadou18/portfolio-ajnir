@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV — Ahmadou Gueye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#e3dbcf}
+a{color:#1a1714;text-decoration:none}a:hover{color:#c26a12}
+.nav-grille{display:grid;grid-template-columns:1fr auto;grid-template-areas:"nom contact" "liens liens";column-gap:24px;row-gap:10px;align-items:end}
+.copie-email{border:0;background:none;padding:4px;margin:-4px;color:#5f5a53;cursor:pointer;display:inline-flex}
+.copie-email:hover{color:#c26a12}
+.nav-nom{grid-area:nom;padding:6px 0}
+.cv-ligne{display:grid;gap:4px;padding:20px 0;border-top:1px solid rgba(26,23,20,.2)}
+@media (min-width:640px){.cv-ligne{grid-template-columns:160px minmax(0,1fr);gap:24px}}
+.cv-competences{display:grid;gap:20px}
+@media (min-width:640px){.cv-competences{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 40px}}
+.logo-trace{stroke-width:12;color:#1a1714}
+.logo-trace path{stroke-dasharray:1 2;stroke-dashoffset:0}
+.nav-nom:hover .logo-trace path,.nav-nom:focus-visible .logo-trace path{animation:logo-trace 700ms cubic-bezier(.65,0,.35,1) both}
+.nav-nom:hover .logo-trace path:nth-child(2),.nav-nom:focus-visible .logo-trace path:nth-child(2){animation-delay:200ms}
+.nav-nom:hover .logo-trace path:nth-child(3),.nav-nom:focus-visible .logo-trace path:nth-child(3){animation-delay:400ms}
+@keyframes logo-trace{from{stroke-dashoffset:1.05}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.logo-trace path{animation:none!important}}
+.nav-contact{grid-area:contact;font-size:18px;line-height:1;padding:6px 0}
+.nav-liens{grid-area:liens;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
+.nav-lien{display:block;padding:6px 0;border-bottom:1px solid rgba(26,23,20,.2)}
+.nav-lien[aria-current="page"]{border-bottom-color:#1a1714}
+@media (min-width:640px){.nav-grille{grid-template-columns:auto 1fr auto;grid-template-areas:"nom liens contact";column-gap:32px}.nav-liens{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div style="min-height: 100vh; background: #e3dbcf; padding: 10px; box-sizing: border-box; color: #1a1714; font-family: 'Inter', system-ui, sans-serif; font-size: 15px; line-height: 1.6">
+<div style="background: #f4efe6; min-height: calc(100vh - 20px); padding: 8px 28px 96px; box-sizing: border-box">
+
+<header style="position: sticky; top: 0; z-index: 10; background: #f4efe6; padding: 16px 0 12px; font-size: 14px">
+<div class="nav-grille">
+<a href="accueil.html" class="nav-nom" aria-label="Ahmadou Gueye, accueil" style="display: flex; align-items: center"><svg class="logo-trace" aria-hidden="true" style="height: 22px; width: auto; display: block" viewBox="0 0 253.57 182.04" fill="none" stroke="currentColor" stroke-width="6.04" stroke-linecap="round" stroke-linejoin="round">  <path pathLength="1" d="M 23.35,156.2 L 114.44,12.25 L 114.44,103.98"/>  <path pathLength="1" d="M 56.4,103.98 L 230.0,103.98 C 226.9,141.6 202.2,169.8 172.39,169.8 C 142.9,169.8 118.5,142.3 114.86,105.0"/>  <path pathLength="1" d="M 114.44,100.0 C 114.44,52.0 138.5,25.92 172.4,25.92 C 187.7,25.92 201.6,33.0 212.0,45.0"/></svg></a>
+<nav aria-label="Navigation principale" class="nav-liens">
+<a href="projets.html" class="nav-lien">Projets</a>
+<a href="accueil.html#a-propos" class="nav-lien">À propos</a>
+<a href="cv.html" aria-current="page" class="nav-lien">CV</a>
+<a href="#contact" class="nav-lien">Contact</a>
+</nav>
+<a href="mailto:[TON EMAIL]" aria-label="Contact par email" class="nav-contact">@</a>
+</div>
+</header>
+
+<main>
+<h1 style="margin: 72px 0 0; font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 40px; line-height: 1.15; letter-spacing: -0.01em">CV<br><span style="color: #8a847c">Développeur front-end, freelance à Paris</span></h1>
+
+<p style="margin: 40px 0 0"><a href="[LIEN CV PDF]" style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid #1a1714; padding-bottom: 4px">Télécharger le PDF <span aria-hidden="true">↓</span></a></p>
+
+<section style="margin-top: 72px">
+<h2 style="margin: 0; border-top: 1px solid rgba(26,23,20,0.2); padding-top: 12px; font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 26px">Expériences</h2>
+<ol style="list-style: none; margin: 32px 0 0; padding: 0"><li class="cv-ligne">
+<span style="font-size: 14px; color: #5f5a53">2026</span>
+<div>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.3">Savelys</h3>
+<p style="margin: 2px 0 0; font-size: 14px; color: #5f5a53">Développeur front-end</p>
+<p style="margin: 8px 0 0; max-width: 620px">Design System Nuxt UI et migration vers une nouvelle identité de marque.</p>
+<p style="margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px"><a href="#" style="font-size: 14px">Voir le projet <span aria-hidden="true">→</span></a></p>
+</div>
+</li>
+<li class="cv-ligne">
+<span style="font-size: 14px; color: #5f5a53">2026</span>
+<div>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.3">Ebru Eroksuz</h3>
+<p style="margin: 2px 0 0; font-size: 14px; color: #5f5a53">Développeur front-end</p>
+<p style="margin: 8px 0 0; max-width: 620px">Site vitrine bilingue français-turc en Next.js et Sanity.</p>
+<p style="margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px"><a href="#" style="font-size: 14px">Voir le projet <span aria-hidden="true">→</span></a></p>
+</div>
+</li>
+<li class="cv-ligne">
+<span style="font-size: 14px; color: #5f5a53">2024–2026</span>
+<div>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.3">Accor</h3>
+<p style="margin: 2px 0 0; font-size: 14px; color: #5f5a53">Développeur front-end</p>
+<p style="margin: 8px 0 0; max-width: 620px">Composants d'un Design System multi-marques, puis équipe Homepage.</p>
+<p style="margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px"><a href="projet-accor.html" style="font-size: 14px">Voir le projet <span aria-hidden="true">→</span></a></p>
+</div>
+</li>
+<li class="cv-ligne">
+<span style="font-size: 14px; color: #5f5a53">2022–2024</span>
+<div>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.3">Dalkia</h3>
+<p style="margin: 2px 0 0; font-size: 14px; color: #5f5a53">Responsable front-end</p>
+<p style="margin: 8px 0 0; max-width: 620px">Application de cartographie pour simuler l'extension des réseaux de chaleur.</p>
+<p style="margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px"><a href="#" style="font-size: 14px">Voir le projet <span aria-hidden="true">→</span></a></p>
+</div>
+</li>
+<li class="cv-ligne">
+<span style="font-size: 14px; color: #5f5a53">2021–2022</span>
+<div>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.3">OpenClassrooms</h3>
+<p style="margin: 2px 0 0; font-size: 14px; color: #5f5a53">Mentor développement front-end</p>
+<p style="margin: 8px 0 0; max-width: 620px">Accompagnement d'une dizaine d'étudiants en React : revues de code, déblocage technique.</p>
+
+</div>
+</li>
+<li class="cv-ligne">
+<span style="font-size: 14px; color: #5f5a53">2020–2021</span>
+<div>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.3">Maisons du Monde</h3>
+<p style="margin: 2px 0 0; font-size: 14px; color: #5f5a53">Développeur front-end</p>
+<p style="margin: 8px 0 0; max-width: 620px">Refonte de la marketplace en Vue.js et Nuxt.</p>
+<p style="margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px"><a href="#" style="font-size: 14px">Voir le projet <span aria-hidden="true">→</span></a></p>
+</div>
+</li>
+<li class="cv-ligne">
+<span style="font-size: 14px; color: #5f5a53">2019</span>
+<div>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.3">Mazarine</h3>
+<p style="margin: 2px 0 0; font-size: 14px; color: #5f5a53">Développeur front-end</p>
+<p style="margin: 8px 0 0; max-width: 620px">Agence digitale : Nestlé Waters, Opéra de Paris, et maintenance pour Dior, Chanel et Avène.</p>
+<p style="margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px"><a href="#" style="font-size: 14px">Nestlé Waters <span aria-hidden="true">→</span></a><a href="#" style="font-size: 14px">Opéra de Paris <span aria-hidden="true">→</span></a></p>
+</div>
+</li>
+<li class="cv-ligne">
+<span style="font-size: 14px; color: #5f5a53">2017–2018</span>
+<div>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.3">Clemenvilla</h3>
+<p style="margin: 2px 0 0; font-size: 14px; color: #5f5a53">Développeur web</p>
+<p style="margin: 8px 0 0; max-width: 620px">Agence web : sites en Drupal et WordPress, plateforme As a Guest en Vue.js.</p>
+<p style="margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px"><a href="#" style="font-size: 14px">Voir le projet <span aria-hidden="true">→</span></a></p>
+</div>
+</li>
+</ol>
+</section>
+
+<section style="margin-top: 96px">
+<h2 style="margin: 0; border-top: 1px solid rgba(26,23,20,0.2); padding-top: 12px; font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 26px">Compétences</h2>
+<div class="cv-competences" style="margin-top: 32px"><div><h3 style="margin: 0; font-size: 14px; font-weight: 500">Front-end</h3><p style="margin: 4px 0 0; color: #5f5a53">Vue 3, Nuxt, React, Next.js, Astro, TypeScript, JavaScript</p></div><div><h3 style="margin: 0; font-size: 14px; font-weight: 500">Interface</h3><p style="margin: 4px 0 0; color: #5f5a53">Tailwind CSS, Sass, Nuxt UI, Design Systems, Storybook</p></div><div><h3 style="margin: 0; font-size: 14px; font-weight: 500">Qualité</h3><p style="margin: 4px 0 0; color: #5f5a53">Vitest, Jest, accessibilité (WCAG), Core Web Vitals</p></div><div><h3 style="margin: 0; font-size: 14px; font-weight: 500">CMS et back-end</h3><p style="margin: 4px 0 0; color: #5f5a53">Strapi, Sanity, Prismic, Drupal, Python / Flask, Laravel</p></div><div><h3 style="margin: 0; font-size: 14px; font-weight: 500">Outils</h3><p style="margin: 4px 0 0; color: #5f5a53">GitLab CI, Docker, Figma</p></div></div>
+</section>
+
+<section style="margin-top: 96px">
+<h2 style="margin: 0; border-top: 1px solid rgba(26,23,20,0.2); padding-top: 12px; font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 26px">Formation</h2>
+<p style="margin: 32px 0 0; color: #5f5a53">[FORMATION]</p>
+</section>
+
+<section style="margin-top: 96px">
+<h2 style="margin: 0; border-top: 1px solid rgba(26,23,20,0.2); padding-top: 12px; font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 26px">Langues</h2>
+<p style="margin: 32px 0 0; color: #5f5a53">[LANGUES]</p>
+</section>
+
+
+<footer id="contact" style="scroll-margin-top: 120px; margin-top: 120px; border-top: 1px solid rgba(26,23,20,0.2); padding-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px">
+<span style="display: inline-flex; align-items: center; gap: 6px"><a href="mailto:[TON EMAIL]">[TON EMAIL]</a><button type="button" aria-label="Copier l'adresse email" class="copie-email"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"></path></svg></button></span>
+<a href="[LIEN LINKEDIN]">LinkedIn</a>
+<a href="[LIEN GITHUB]">GitHub</a>
+<span style="margin-left: auto; color: #5f5a53">Paris</span>
+</footer>
+</main>
+
+</div>
+</div>
+</body>
+</html>
