@@ -8,7 +8,6 @@ const navigationLinks = [
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
 
-// A link is current on its own page and on its sub-pages (/projets/accor → Projets).
 function isCurrentPage(href: string) {
   if (!href.startsWith('/') || href.includes('#')) return false;
   return currentPath === href || currentPath.startsWith(`${href}/`);

@@ -2,8 +2,9 @@
 import PageHeading from '@/components/Heading/PageHeading.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProjectGrid from "@/components/ProjectGrid/ProjectGrid.astro";
+import { getSortedProjects } from "@/lib/projects";
 
-import { projects } from "@/data/projects";
+const projects = await getSortedProjects();
 ---
 
 <BaseLayout
