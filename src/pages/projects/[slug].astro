@@ -2,8 +2,8 @@
 import { render } from "astro:content";
 import { getSortedProjects } from "@/lib/projects";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import PageHeading from "@/components/Heading/PageHeading.astro";
-import ProjectCover from "@/components/ProjectCover/ProjectCover.astro";
+import PageHeading from "@/components/PageHeading.astro";
+import ProjectCover from "@/components/ProjectCover.astro";
 
 export async function getStaticPaths() {
   const projects = await getSortedProjects();
