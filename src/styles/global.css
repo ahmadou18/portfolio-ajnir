@@ -40,4 +40,27 @@
       @apply pl-2;
     }
   }
-}
+}}
+
+
+@layer components {
+  .logo-trace path {
+    stroke-dasharray: 1 2;
+    stroke-dashoffset: 0;
+  }
+  .group:hover .logo-trace path,
+  .group:focus-visible .logo-trace path {
+    animation: logo-trace 700ms cubic-bezier(.65, 0, .35, 1) both;
+  }
+  .group:hover .logo-trace path:nth-child(2),
+  .group:focus-visible .logo-trace path:nth-child(2) { animation-delay: 200ms; }
+  .group:hover .logo-trace path:nth-child(3),
+  .group:focus-visible .logo-trace path:nth-child(3) { animation-delay: 400ms; }
+
+  @keyframes logo-trace {
+    from { stroke-dashoffset: 1.05; }
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-trace path { animation: none; }
+  }

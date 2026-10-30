@@ -69,11 +69,12 @@ Polices via `@fontsource-variable/fraunces` et `@fontsource-variable/inter`.
 Sticky en haut, fond `paper`, padding 16px en haut et 12px en bas, texte 14px.
 
 - **Desktop (≥ 640px)** : une seule ligne en grille `auto 1fr auto`, gap 32px, alignée en bas.
-  `Ahmadou Gueye` | 4 liens en 4 colonnes égales | `@` (18px)
-- **Mobile** : ligne 1 = nom à gauche, `@` à droite. Ligne 2 = les 4 liens en grille 2×2, gap 24px.
+  Logo seul (`aria-label="Ahmadou Gueye, accueil"`) | 4 liens en 4 colonnes égales | `@` (18px)
+- **Mobile** : ligne 1 = logo à gauche, `@` à droite. Ligne 2 = les 4 liens en grille 2×2, gap 24px.
 - Chaque lien : bloc, padding vertical 6px, **filet sous le lien** (`border-b border-ink/20`).
 - Page active : `aria-current="page"` et filet plein `border-ink`.
 - Liens : Projets, À propos, CV, Contact. Le `@` a `aria-label="Contact par email"`.
+- **Logo** (`src/assets/logo.svg`, version en traits) : 22px de haut, `stroke-[12]`, toujours en `ink` (ne change pas de couleur au survol), gap 10px avec le nom, `aria-hidden="true"`. Au survol ou au focus du lien, il se redessine en CSS (A, puis barre et boucle du G, puis haut du G, 700ms, décalage 200ms). Aucune animation en `prefers-reduced-motion`.
 
 ### PageHeading
 
