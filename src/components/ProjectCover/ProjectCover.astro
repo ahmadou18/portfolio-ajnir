@@ -6,7 +6,7 @@ export type CoverColor = "ink" | "ochre";
 
 interface Props {
   title: string;
-  image?: ImageMetadata;
+  image?: ImageMetadata | string;
   color: CoverColor;
   variant: "card" | "hero";
 }
@@ -17,27 +17,68 @@ const backgroundByColor: Record<CoverColor, string> = {
   ochre: "bg-ochre",
 };
 
-const classesByVariant: Record<Props["variant"], { frame: string; title: string; image: string }> = {
+const optionsByVariant: Record<
+  Props["variant"],
+  { frame: string; title: string; image: string; sizes: string }
+> = {
   card: {
     frame: "aspect-[4/5]",
     title: "text-5xl",
-    image: "motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105",
+    image:
+      "motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105",
+    sizes: "(min-width: 640px) 50vw, 100vw",
   },
-  hero: { frame: "aspect-[16/10] sm:aspect-[3/1]", title: "text-5xl sm:text-7xl", image: "" },
+  hero: {
+    frame: "aspect-[16/10] sm:aspect-[3/1]",
+    title: "text-5xl sm:text-7xl",
+    image: "",
+    sizes: "100vw",
+  },
 };
 ---
-<div class:list={[
-  "relative grid place-items-center overflow-hidden rounded-xs text-paper",
-  classesByVariant[variant].frame,
-  !image && backgroundByColor[color],
-]}>
+
+<div
+  class:list={[
+    "relative grid place-items-center overflow-hidden rounded-xs text-paper",
+    optionsByVariant[variant].frame,
+    !image && backgroundByColor[color],
+  ]}
+>
   {image && (
     <>
-      <Image src={image} alt="" class:list={["absolute inset-0 size-full object-cover", classesByVariant[variant].image]} />
+      {typeof image === "string" ? (
+        <Image
+          src={image}
+          alt=""
+          inferSize
+          widths={[480, 960, 1600, 2400]}
+          sizes={optionsByVariant[variant].sizes}
+          class:list={[
+            "absolute inset-0 size-full object-cover",
+            optionsByVariant[variant].image,
+          ]}
+        />
+      ) : (
+        <Image
+          src={image}
+          alt=""
+          widths={[480, 960, 1600, 2400]}
+          sizes={optionsByVariant[variant].sizes}
+          class:list={[
+            "absolute inset-0 size-full object-cover",
+            optionsByVariant[variant].image,
+          ]}
+        />
+      )}
       <div class="absolute inset-0 bg-ink/40" aria-hidden="true"></div>
     </>
   )}
-  <span class:list={["relative px-5 text-center font-serif font-light", classesByVariant[variant].title]}>
+  <span
+    class:list={[
+      "relative px-5 text-center font-serif font-light",
+      optionsByVariant[variant].title,
+    ]}
+  >
     {title}
   </span>
 </div>

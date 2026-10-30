@@ -5,6 +5,7 @@ years: "2019"
 role: Développeur front-end
 stack: [Vue.js, Nuxt, Drupal headless, YouTube IFrame API]
 order: 6
+image: https://images.unsplash.com/photo-1527022206739-2c7edca55829?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
 ---
 
 ## Contexte
