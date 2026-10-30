@@ -1,6 +1,6 @@
 ---
-import PageHeading from '@/components/Heading/PageHeading.astro';
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeading from "@/components/Heading/PageHeading.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProjectGrid from "@/components/ProjectGrid/ProjectGrid.astro";
 import { getSortedProjects } from "@/lib/projects";
 
@@ -11,14 +11,12 @@ const projects = await getSortedProjects();
   title="Projets — Ahmadou Gueye"
   description="Missions front-end en Vue, Nuxt et React : Accor, Savelys, Dalkia, Maisons du Monde…"
 >
+  <PageHeading
+    title="Projets"
+    subtitle="Du e-commerce à l’énergie, en Vue et en React"
+  />
 
-    <PageHeading
-      title="Projets"
-      subtitle="Du e-commerce à l’énergie, en Vue et en React"
-    />
-
-    <div class="mt-18">
-      <ProjectGrid projects={projects} />
-    </div>
+  <div class="mt-18">
+    <ProjectGrid projects={projects} />
+  </div>
 </BaseLayout>
-

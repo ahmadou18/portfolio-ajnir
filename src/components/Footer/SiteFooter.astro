@@ -3,19 +3,20 @@ import CopyEmailButton from "@/components/CopyEmailButton/CopyEmailButton.astro"
 const email = "ahmadou.gue@gmail.com";
 
 const socialLinks = [
-    { label: email, href: `mailto:${email}`, copyValue: email },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/ahmadou-gueye" },
-    { label: "GitHub", href: "https://github.com/ahmadou18" },
+  { label: email, href: `mailto:${email}`, copyValue: email },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ahmadou-gueye" },
+  { label: "GitHub", href: "https://github.com/ahmadou18" },
 ];
 ---
+
 <footer class="pt-4 mt-30 border-t border-ink/35 text-sm">
-    <ul class="flex flex-wrap gap-x-6 gap-y-2">
-        {socialLinks.map(({ label, href, copyValue }) => (
-            <li>
-                <a href={href}>{label}</a>
-                {copyValue && <CopyEmailButton email={copyValue} />}
-            </li>
-        ))}
-      <li class="ml-auto text-muted-strong">Paris</li>
-    </ul>
+  <ul class="flex flex-wrap gap-x-6 gap-y-2">
+    {socialLinks.map(({ label, href, copyValue }) => (
+      <li>
+        <a href={href}>{label}</a>
+        {copyValue && <CopyEmailButton email={copyValue} />}
+      </li>
+    ))}
+    <li class="ml-auto text-muted-strong">Paris</li>
+  </ul>
 </footer>
