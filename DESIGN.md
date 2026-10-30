@@ -8,13 +8,13 @@ Traduire tout ce qui suit en classes Tailwind et en tokens `@theme` : jamais de 
 
 ### Couleurs
 
-| Token | Valeur | Usage |
-|---|---|---|
-| `frame` | `#e3dbcf` | Fond sable autour de la feuille, `body` |
-| `paper` | `#f4efe6` | Feuille de contenu, texte sur blocs pleins |
-| `ink` | `#1a1714` | Texte principal, blocs pleins, filet actif |
-| `ochre` | `#c26a12` | Accent (survol des liens), blocs pleins |
-| `muted` | `#8a847c` | 2e ligne des **grands titres uniquement** |
+| Token          | Valeur    | Usage                                             |
+| -------------- | --------- | ------------------------------------------------- |
+| `frame`        | `#e3dbcf` | Fond sable autour de la feuille, `body`           |
+| `paper`        | `#f4efe6` | Feuille de contenu, texte sur blocs pleins        |
+| `ink`          | `#1a1714` | Texte principal, blocs pleins, filet actif        |
+| `ochre`        | `#c26a12` | Accent (survol des liens), blocs pleins           |
+| `muted`        | `#8a847c` | 2e ligne des **grands titres uniquement**         |
 | `muted-strong` | `#5f5a53` | Métas, sous-titres de projets, textes secondaires |
 
 Filets : `ink` à 20 % d'opacité (`border-ink/20`). Filets pointillés : `ink` à 35 % (`border-dashed border-ink/35`).
@@ -23,14 +23,14 @@ Filets : `ink` à 20 % d'opacité (`border-ink/20`). Filets pointillés : `ink` 
 
 ### Typographie
 
-| Rôle | Police | Graisse | Taille |
-|---|---|---|---|
-| Titre de page (h1) | Fraunces | 300 | 40px, interligne 1.15, `tracking -0.01em` |
-| Titre de section (h2) | Fraunces | 300 (accueil) / 400 (page projet) | 26px / 22px |
-| Nom de client (bloc) | Fraunces | 300 | 48px (72px sur la page projet) |
-| Corps | Inter | 400 | 15px, interligne 1.6 |
-| Nav, métas, légendes | Inter | 400 | 14px |
-| Lien « TOUT → » | Inter | 500 | 13px, majuscules, `tracking 0.04em` |
+| Rôle                  | Police   | Graisse                           | Taille                                    |
+| --------------------- | -------- | --------------------------------- | ----------------------------------------- |
+| Titre de page (h1)    | Fraunces | 300                               | 40px, interligne 1.15, `tracking -0.01em` |
+| Titre de section (h2) | Fraunces | 300 (accueil) / 400 (page projet) | 26px / 22px                               |
+| Nom de client (bloc)  | Fraunces | 300                               | 48px (72px sur la page projet)            |
+| Corps                 | Inter    | 400                               | 15px, interligne 1.6                      |
+| Nav, métas, légendes  | Inter    | 400                               | 14px                                      |
+| Lien « TOUT → »       | Inter    | 500                               | 13px, majuscules, `tracking 0.04em`       |
 
 Polices via `@fontsource-variable/fraunces` et `@fontsource-variable/inter`.
 
@@ -80,11 +80,11 @@ Sticky en haut, fond `paper`, padding 16px en haut et 12px en bas, texte 14px.
 
 h1 en deux lignes : la 1re en `ink`, la 2e en `muted`.
 
-| Page | Ligne 1 | Ligne 2 |
-|---|---|---|
+| Page    | Ligne 1       | Ligne 2                                         |
+| ------- | ------------- | ----------------------------------------------- |
 | Accueil | Ahmadou Gueye | Développeur front-end senior, freelance à Paris |
-| Projets | Projets | Du e-commerce à l'énergie, en Vue et en React |
-| Projet | Nom du client | Une phrase de résumé |
+| Projets | Projets       | Du e-commerce à l'énergie, en Vue et en React   |
+| Projet  | Nom du client | Une phrase de résumé                            |
 
 ### ProjectCard
 
@@ -126,14 +126,14 @@ Filet pointillé au-dessus, padding-top 16px, 14px. Liens Email, LinkedIn, GitHu
 3. ProjectGrid avec tous les projets, 72px sous le titre
 4. SiteFooter
 
-| title | subtitle | years |
-|---|---|---|
-| Accor | Sites à grande échelle, Core Web Vitals | 2024–2026 |
-| Savelys | Design System, groupe Engie | [ANNÉE] |
-| Dalkia | Dataviz Vue.js et cadrage produit | [ANNÉE] |
-| Maisons du Monde | Vue, Nuxt et GraphQL | [ANNÉE] |
-| Nestlé Waters | React et lecteur vidéo YouTube sur mesure | 2019 |
-| Clemenvilla | Vue.js et Drupal headless | 2017–2018 |
+| title            | subtitle                                  | years     |
+| ---------------- | ----------------------------------------- | --------- |
+| Accor            | Sites à grande échelle, Core Web Vitals   | 2024–2026 |
+| Savelys          | Design System, groupe Engie               | [ANNÉE]   |
+| Dalkia           | Dataviz Vue.js et cadrage produit         | [ANNÉE]   |
+| Maisons du Monde | Vue, Nuxt et GraphQL                      | [ANNÉE]   |
+| Nestlé Waters    | React et lecteur vidéo YouTube sur mesure | 2019      |
+| Clemenvilla      | Vue.js et Drupal headless                 | 2017–2018 |
 
 ### Page projet (`src/pages/projects/[slug].astro`)
 

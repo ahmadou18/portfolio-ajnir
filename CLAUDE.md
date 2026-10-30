@@ -67,8 +67,8 @@ subtitle: Sites à grande échelle, Core Web Vitals
 years: 2024–2026
 role: Développeur front-end
 stack: [Vue 3, AEM]
-order: 2                  # ordre d'affichage
-image: ../../assets/projects/accor/accor.jpg   # optionnel
+order: 2 # ordre d'affichage
+image: ../../assets/projects/accor/accor.jpg # optionnel
 ```
 
 Pas de couleur dans les données : `ProjectGrid` la calcule selon la position (damier `ink` / `ochre`).
