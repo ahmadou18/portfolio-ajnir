@@ -38,21 +38,22 @@ DESIGN.md                       # référence visuelle
 src/
   components/
     SiteHeader.astro
-    Footer/SiteFooter.astro
-    Heading/PageHeading.astro
-    SectionHeader/SectionHeader.astro
-    ProjectGrid/ProjectGrid.astro     # calcule la couleur en damier
-    ProjectCard/ProjectCard.astro
-    ProjectCover/ProjectCover.astro   # bloc couleur ou image (variant card | hero)
-    CopyEmailButton/CopyEmailButton.astro   # bouton « Copier l'email » (script natif)
+    SiteFooter.astro
+    PageHeading.astro
+    SectionHeader.astro               # lien « TOUT → » optionnel
+    ProjectGrid.astro                 # calcule la couleur en damier
+    ProjectCard.astro
+    ProjectCover.astro                # bloc couleur ou image (variant card | hero)
+    CopyEmailButton.astro             # bouton « Copier l'email » (script natif)
   content/
     projects/*.md               # un fichier par projet
     experiences.yaml            # expériences du CV (référencent les projets)
   content.config.ts             # schémas des collections projects et experiences
+  config.ts                     # infos du site : nom, email, LinkedIn, GitHub
   layouts/
     BaseLayout.astro
   lib/
-    projects.ts                 # getSortedProjects()
+    projects.ts                 # getSortedProjects(), getFeaturedProjects()
   pages/
     index.astro
     projects/index.astro
@@ -70,7 +71,8 @@ years: 2024–2026
 role: Développeur front-end
 stack: [Vue 3, AEM]
 order: 2 # ordre d'affichage
-image: ../../assets/projects/accor/accor.jpg # optionnel
+featured: true # affiché sur l'accueil (optionnel)
+image: https://images.unsplash.com/… # optionnel, URL Unsplash ou image locale
 ```
 
 Pas de couleur dans les données : `ProjectGrid` la calcule selon la position (damier `ink` / `ochre`).
