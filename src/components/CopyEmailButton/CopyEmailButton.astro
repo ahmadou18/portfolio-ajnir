@@ -1,0 +1,57 @@
+---
+interface Props {
+  email: string;
+}
+const { email } = Astro.props;
+---
+<button
+  type="button"
+  data-copy-email={email}
+  hidden
+  aria-label="Copier l'adresse email"
+  class="-m-[5px] cursor-pointer p-[5px] text-muted-strong transition-colors hover:text-ochre focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+>
+  <svg data-copy-icon viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="9" y="9" width="12" height="12" rx="2" />
+    <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" />
+  </svg>
+  <svg data-copied-icon hidden viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M20 6 9 17l-5-5" />
+  </svg>
+</button>
+<span role="status" class="sr-only" data-copy-status></span>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-copy-email]");
+
+buttons.forEach((button) => {
+    const copyIcon = button.querySelector<SVGElement>("[data-copy-icon]");
+    const copiedIcon = button.querySelector<SVGElement>("[data-copied-icon]");
+    const status = button.nextElementSibling;
+    let resetTimer: ReturnType<typeof setTimeout> | undefined;
+
+    button.hidden = false;
+
+    button.addEventListener("click", async () => {
+      const email = button.dataset.copyEmail;
+      if (!email) return;
+
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        return;
+      }
+
+      copyIcon?.toggleAttribute("hidden", true);
+      copiedIcon?.toggleAttribute("hidden", false);
+      if (status) status.textContent = "Email copié";
+
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => {
+        copyIcon?.toggleAttribute("hidden", false);
+        copiedIcon?.toggleAttribute("hidden", true);
+        if (status) status.textContent = "";
+      }, 2000);
+    });
+  });
+</script>
