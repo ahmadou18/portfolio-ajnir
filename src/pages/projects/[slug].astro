@@ -12,19 +12,37 @@ export async function getStaticPaths() {
     params: { slug: project.id },
     props: {
       project,
+      previousProject: projects[(index - 1 + projects.length) % projects.length],
       nextProject: projects[(index + 1) % projects.length],
     },
   }));
 }
 
-const { project, nextProject } = Astro.props;
+const { project, previousProject, nextProject } = Astro.props;
 const { Content } = await render(project);
 ---
 <BaseLayout title={`${project.data.title} — Ahmadou Gueye`} description={project.data.subtitle}>
+  <script is:inline slot="head">
+    addEventListener("pageswap", (event) => {
+      const destination = event.activation?.entry.url;
+      const link = [...document.querySelectorAll("a[data-transition]")].find((a) => a.href === destination);
+      try {
+        if (event.viewTransition && link) sessionStorage.setItem("transition-direction", link.dataset.transition);
+      } catch {}
+    });
+    addEventListener("pagereveal", (event) => {
+      try {
+        const direction = sessionStorage.getItem("transition-direction");
+        sessionStorage.removeItem("transition-direction");
+        if (event.viewTransition && direction) event.viewTransition.types.add(direction);
+      } catch {}
+    });
+  </script>
+
   <article>
     <PageHeading title={project.data.title} subtitle={project.data.subtitle} />
     <div class="mt-12">
-      <ProjectCover  
+      <ProjectCover
         variant="hero"
         title={project.data.title}
         image={project.data.image}
@@ -50,9 +68,10 @@ const { Content } = await render(project);
       <Content />
     </div>
 
-    <nav aria-label="Navigation entre projets" class="mt-24 border-t border-dashed border-ink/35 pt-4 flex flex-wrap justify-between gap-4 text-sm">
-        <a href="/projects"><span aria-hidden="true">←</span> Tous les projets</a>
-        <a href={`/projects/${nextProject.id}`}>Projet suivant : {nextProject.data.title} <span aria-hidden="true">→</span></a>
+    <nav aria-label="Navigation entre projets" class="mt-24 grid gap-4 border-t border-dashed border-ink/35 pt-4 text-sm sm:grid-cols-[1fr_auto_1fr]">
+        <a href={`/projects/${previousProject.id}`} rel="prev" data-transition="previous"><span aria-hidden="true">←</span> Projet précédent : {previousProject.data.title}</a>
+        <a href="/projects">Tous les projets</a>
+        <a href={`/projects/${nextProject.id}`} rel="next" data-transition="next" class="sm:text-right">Projet suivant : {nextProject.data.title} <span aria-hidden="true">→</span></a>
     </nav>
   </article>
 </BaseLayout>

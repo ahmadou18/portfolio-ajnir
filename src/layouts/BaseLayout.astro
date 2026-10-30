@@ -20,6 +20,7 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <slot name="head" />
   </head>
   <body class="p-2.5">
     <div class="min-h-[calc(100vh-20px)] bg-paper px-7 pt-2 pb-24">

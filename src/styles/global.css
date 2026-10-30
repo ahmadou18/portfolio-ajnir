@@ -24,6 +24,52 @@
   }
 }
 
+/* Transitions entre pages : fondu par défaut, glissement entre projets */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+header {
+  view-transition-name: site-header;
+}
+
+html:active-view-transition-type(next) {
+  &::view-transition-old(root) {
+    animation: 300ms ease-in both slide-out-to-left;
+  }
+  &::view-transition-new(root) {
+    animation: 300ms ease-out both slide-in-from-right;
+  }
+}
+
+html:active-view-transition-type(previous) {
+  &::view-transition-old(root) {
+    animation: 300ms ease-in both slide-out-to-right;
+  }
+  &::view-transition-new(root) {
+    animation: 300ms ease-out both slide-in-from-left;
+  }
+}
+
+@keyframes slide-out-to-left {
+  to { transform: translateX(-100%); }
+}
+@keyframes slide-out-to-right {
+  to { transform: translateX(100%); }
+}
+@keyframes slide-in-from-right {
+  from { transform: translateX(100%); }
+}
+@keyframes slide-in-from-left {
+  from { transform: translateX(-100%); }
+}
+
 
 @layer components {
   .project-content {
@@ -40,7 +86,7 @@
       @apply pl-2;
     }
   }
-}}
+}
 
 
 @layer components {
@@ -64,3 +110,4 @@
   @media (prefers-reduced-motion: reduce) {
     .logo-trace path { animation: none; }
   }
+}

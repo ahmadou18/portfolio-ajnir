@@ -141,14 +141,20 @@ Dans un `<article>` pleine largeur (seul le contenu texte, point 5, est limité 
 
 1. SiteHeader (Projets actif)
 2. PageHeading (client + résumé)
-3. Bloc couleur **16/10**, nom du client en 72px, 48px sous le titre
+3. Bloc couleur en bandeau : **3/1 sur desktop** (≥ 640px), **16/10 sur mobile** ; nom du client en 72px (48px sur mobile), 48px sous le titre
 4. Métas en `<dl>`, grille de 3 colonnes, sous un filet pointillé, 24px au-dessus : Année, Rôle, Stack (libellés en `muted-strong`)
 5. Sections h2, dans un conteneur `max-width` 860px : **Contexte**, **Ce que j'ai fait** (liste à puces), **Résultat**
-6. Navigation bas de page sous un filet pointillé, 96px au-dessus : « ← Tous les projets » à gauche, « Projet suivant : X → » à droite
+6. Navigation bas de page sous un filet pointillé, 96px au-dessus, en 3 liens : « ← Projet précédent : X » à gauche, « Tous les projets » au centre, « Projet suivant : Y → » à droite (grille `1fr auto 1fr` dès 640px, liens empilés sur mobile). La liste boucle : avant le premier projet vient le dernier
 
 ## Animations
 
-Très discrètes. Fancy Components uniquement en touche (ex. Letter Swap au survol du nom de client). Toujours respecter `prefers-reduced-motion`.
+Très discrètes et **en CSS uniquement** : le site n'envoie pas de JS pour de la décoration.
+
+- Survol d'une carte : léger zoom de l'image (`scale-105`, ~500ms) et légende en `ochre`. Les cartes sans image ne bougent pas, seule la légende change.
+- Chaque effet de survol a son équivalent au clavier (`group-focus-visible`), et un contour de focus visible sur les liens.
+- Toujours respecter `prefers-reduced-motion` (`motion-reduce:`).
+- **Transitions entre pages** : View Transitions natives du navigateur (`@view-transition { navigation: auto; }`), sans `ClientRouter` d'Astro. Fondu par défaut ; glissement vers la gauche pour « Projet suivant », vers la droite pour « Projet précédent ». Les navigateurs non compatibles changent simplement de page, sans animation. Désactivées en `prefers-reduced-motion`.
+- JS uniquement pour une fonctionnalité utile (ex. bouton « Copier l'email ») ou pour indiquer le sens d'une transition, jamais pour un effet visuel en soi.
 
 ## Placeholders
 
