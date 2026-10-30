@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntries } from "astro:content";
-import PageHeading from "@/components/Heading/PageHeading.astro";
+import PageHeading from "@/components/PageHeading.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const experienceEntries = (await getCollection("experiences")).toSorted(
