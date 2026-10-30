@@ -20,7 +20,7 @@
   }
 
   a {
-    @apply text-ink no-underline hover:text-ochre;
+    @apply text-ink no-underline hover:text-ochre focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink;
   }
 }
 
