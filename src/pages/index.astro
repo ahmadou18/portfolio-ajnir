@@ -3,8 +3,9 @@ import PageHeading from '@/components/Heading/PageHeading.astro';
 import SectionHeader from '@/components/SectionHeader/SectionHeader.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProjectGrid from "@/components/ProjectGrid/ProjectGrid.astro";
+import { getSortedProjects } from "@/lib/projects";
 
-import { projects } from "@/data/projects";
+const projects = await getSortedProjects();
 ---
 
 <BaseLayout
@@ -14,7 +15,7 @@ import { projects } from "@/data/projects";
 
     <PageHeading
       title="Ahmadou Gueye"
-      subtitle="Développeur front-end"
+      subtitle="Développeur front-end senior, freelance à Paris"
     />
 
     <section id="a-propos" class="mt-10 max-w-[540px] space-y-3 scroll-mt-28">
@@ -23,7 +24,7 @@ import { projects } from "@/data/projects";
     </section>
 
     <section class="mt-24">
-      <SectionHeader title="Projets sélectionnés" linkLabel="Tout" linkContext=' : voir tous les projets' linkHref="/projets" />
+      <SectionHeader title="Projets sélectionnés" linkLabel="Tout" linkContext=' : voir tous les projets' linkHref="/projects" />
       <ProjectGrid projects={projects.slice(0, 4)} />
     </section>
 </BaseLayout>
