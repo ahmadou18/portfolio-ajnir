@@ -1,5 +1,5 @@
 ---
-import type { ImageMetadata } from "astro";
+import type { CollectionEntry } from "astro:content";
 import ProjectCover, {
   type CoverColor,
 } from "@/components/ProjectCover.astro";
@@ -9,7 +9,7 @@ interface Props {
   years: string;
   href: string;
   color: CoverColor;
-  image?: ImageMetadata;
+  image?: CollectionEntry<"projects">["data"]["image"];
 }
 const { title, subtitle, years, href, color, image } = Astro.props;
 ---
