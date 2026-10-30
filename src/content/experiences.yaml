@@ -1,0 +1,62 @@
+- id: savelys
+  order: 1
+  company: Savelys
+  years: "2026"
+  role: Développeur front-end
+  description: Design System Nuxt UI et migration vers une nouvelle identité de marque.
+  projects: [savelys]
+
+- id: ebru-eroksuz
+  order: 2
+  company: Ebru Eroksuz
+  years: "2026"
+  role: Développeur front-end
+  description: Site vitrine bilingue français-turc en Next.js et Sanity.
+  projects: [ebru-eroksuz]
+
+- id: accor
+  order: 3
+  company: Accor
+  years: 2024–2026
+  role: Développeur front-end
+  description: Composants d'un Design System multi-marques, puis équipe Homepage.
+  projects: [accor]
+
+- id: dalkia
+  order: 4
+  company: Dalkia
+  years: 2022–2024
+  role: Responsable front-end
+  description: Application de cartographie pour simuler l'extension des réseaux de chaleur.
+  projects: [dalkia]
+
+- id: openclassrooms
+  order: 5
+  company: OpenClassrooms
+  years: 2021–2022
+  role: Mentor développement front-end
+  description: "Accompagnement d'une dizaine d'étudiants en React : revues de code, déblocage technique."
+
+- id: maisons-du-monde
+  order: 6
+  company: Maisons du Monde
+  years: 2020–2021
+  role: Développeur front-end
+  description: Refonte de la marketplace en Vue.js et Nuxt.
+  projects: [maisons-du-monde]
+
+- id: mazarine
+  order: 7
+  company: Mazarine
+  years: "2019"
+  role: Développeur front-end
+  description: "Agence digitale : Nestlé Waters, Opéra de Paris, et maintenance pour Dior, Chanel et Avène."
+  projects: [nestle-waters, opera-de-paris]
+
+- id: clemenvilla
+  order: 8
+  company: Clemenvilla
+  years: 2017–2018
+  role: Développeur web
+  description: "Agence web : sites en Drupal et WordPress, plateforme As a Guest en Vue.js."
+  projects: [clemenvilla]

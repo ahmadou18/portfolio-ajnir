@@ -1,5 +1,5 @@
-import { defineCollection } from "astro:content";
-import { glob } from "astro/loaders";
+import { defineCollection, reference } from "astro:content";
+import { file, glob } from "astro/loaders";
 import { z } from "astro/zod";
 
 const projects = defineCollection({
@@ -16,4 +16,16 @@ const projects = defineCollection({
     }),
 });
 
-export const collections = { projects };
+const experiences = defineCollection({
+  loader: file("./src/content/experiences.yaml"),
+  schema: z.object({
+    company: z.string(),
+    years: z.coerce.string(),
+    role: z.string(),
+    description: z.string(),
+    order: z.number(),
+    projects: z.array(reference("projects")).default([]),
+  }),
+});
+
+export const collections = { projects, experiences };
