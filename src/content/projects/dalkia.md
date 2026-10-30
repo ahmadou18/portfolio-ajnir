@@ -17,6 +17,7 @@ stack:
     SQLAlchemy,
   ]
 order: 4
+featured: true
 image: https://images.unsplash.com/photo-1681879804167-86f7376d1654?q=80&w=1065&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
 ---
 

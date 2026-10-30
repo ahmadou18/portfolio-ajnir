@@ -5,3 +5,9 @@ export async function getSortedProjects() {
 
   return projects.toSorted((a, b) => a.data.order - b.data.order);
 }
+
+export async function getFeaturedProjects() {
+  const projects = await getSortedProjects();
+
+  return projects.filter((project) => project.data.featured);
+}
