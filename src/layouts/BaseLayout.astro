@@ -45,9 +45,17 @@ const imageUrl = new URL(image, Astro.site);
     <slot name="head" />
   </head>
   <body class="p-2.5">
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-xs focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
+    >
+      Aller au contenu
+    </a>
     <div class="min-h-[calc(100vh-20px)] bg-paper px-7 pt-2 pb-24">
       <SiteHeader />
-      <slot />
+      <main id="content" tabindex="-1" class="scroll-mt-28 focus:outline-none">
+        <slot />
+      </main>
       <SiteFooter />
     </div>
   </body>
