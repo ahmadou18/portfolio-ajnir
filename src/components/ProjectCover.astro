@@ -6,11 +6,12 @@ export type CoverColor = "ink" | "ochre";
 
 interface Props {
   title: string;
+  slug: string;
   image?: ImageMetadata | string;
   color: CoverColor;
   variant: "card" | "hero";
 }
-const { title, image, color, variant } = Astro.props;
+const { title, image, color, variant, slug} = Astro.props;
 
 const backgroundByColor: Record<CoverColor, string> = {
   ink: "bg-ink",
@@ -38,8 +39,9 @@ const optionsByVariant: Record<
 ---
 
 <div
+  style={`view-transition-name: cover-${slug}`}
   class:list={[
-    "relative grid place-items-center overflow-hidden rounded-xs text-paper",
+    "relative grid place-items-center overflow-hidden rounded-xs text-paper [view-transition-class:project-cover]",
     optionsByVariant[variant].frame,
     !image && backgroundByColor[color],
   ]}

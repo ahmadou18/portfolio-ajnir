@@ -178,7 +178,7 @@ Très discrètes et **en CSS uniquement** : le site n'envoie pas de JS pour de l
 - Survol d'une carte : léger zoom de l'image (`scale-105`, ~500ms) et légende en `ochre`. Les cartes sans image ne bougent pas, seule la légende change.
 - Chaque effet de survol a son équivalent au clavier (`group-focus-visible`), et un contour de focus visible sur les liens.
 - Toujours respecter `prefers-reduced-motion` (`motion-reduce:`).
-- **Transitions entre pages** : View Transitions natives du navigateur (`@view-transition { navigation: auto; }`), sans `ClientRouter` d'Astro. Fondu par défaut ; glissement vers la gauche pour « Projet suivant », vers la droite pour « Projet précédent ». Les navigateurs non compatibles changent simplement de page, sans animation. Désactivées en `prefers-reduced-motion`.
+- **Transitions entre pages** : View Transitions natives du navigateur (`@view-transition { navigation: auto; }`), sans `ClientRouter` d'Astro. Fondu par défaut ; entre projets, fondu avec un décalage de 24px vers la gauche pour « Projet suivant », vers la droite pour « Projet précédent » (sortie 200ms, entrée 300ms décalée de 100ms). Le header reste immobile. Les navigateurs non compatibles changent simplement de page, sans animation. Désactivées en `prefers-reduced-motion`.
 - JS uniquement pour une fonctionnalité utile (ex. bouton « Copier l'email ») ou pour indiquer le sens d'une transition, jamais pour un effet visuel en soi.
 
 ## Placeholders
