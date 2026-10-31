@@ -11,15 +11,16 @@ interface Props {
   href: string;
   color: CoverColor;
   image?: CollectionEntry<"projects">["data"]["image"];
+  priority?: boolean;
 }
-const { title, subtitle, years, href, color, image, slug } = Astro.props;
+const { title, subtitle, years, href, color, image, slug, priority } = Astro.props;
 ---
 
 <a
   href={href}
   class="group block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ochre"
 >
-  <ProjectCover variant="card" title={title} color={color} image={image} slug={slug}/>
+  <ProjectCover variant="card" title={title} color={color} image={image} slug={slug} priority={priority}/>
   <div class="mt-3 flex justify-between gap-4 text-sm text-muted-strong transition-colors group-hover:text-ochre group-focus-visible:text-ochre">
     <span>
       {subtitle} <span aria-hidden="true">→</span>

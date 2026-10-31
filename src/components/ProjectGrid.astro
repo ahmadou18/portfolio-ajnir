@@ -5,8 +5,10 @@ import type { CoverColor } from "@/components/ProjectCover.astro";
 
 interface Props {
   projects: CollectionEntry<"projects">[];
+  /** Loads the first card eagerly: use it when the grid is above the fold (LCP). */
+  prioritizeFirst?: boolean;
 }
-const { projects } = Astro.props;
+const { projects, prioritizeFirst = false } = Astro.props;
 
 function getCheckerColor(index: number): CoverColor {
   const row = Math.floor(index / 2);
@@ -23,6 +25,7 @@ function getCheckerColor(index: number): CoverColor {
       color={getCheckerColor(index)}
       href={`/projects/${project.id}/`}
       slug={project.id}
+      priority={prioritizeFirst && index === 0}
     />
   ))}
 </div>

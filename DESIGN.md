@@ -91,7 +91,7 @@ h1 en deux lignes : la 1re en `ink`, la 2e en `muted`.
 - Lien englobant tout le bloc
 - Carré **1/1**, coins 2px
 - **Sans image** (repli si un projet n'a pas de photo) : fond `ink` ou `ochre` (reçu de `ProjectGrid`), nom du client centré en `paper`, Fraunces 300, 48px, padding horizontal 20px
-- **Avec image** (cas normal) : photo d'ambiance Unsplash (URL distante, optimisée par Astro au build), sans logo ni enseigne visible ; elle remplit le rectangle (`object-cover`) avec `alt=""` (le nom du client est déjà dans le lien), recouverte d'un voile `ink` à 40 % pour le contraste. Le nom du client reste centré par-dessus, identique au cas sans image
+- **Avec image** (cas normal) : photo d'ambiance Unsplash (URL distante, optimisée par Astro au build), sans logo ni enseigne visible ; elle remplit le rectangle (`object-cover`) avec `alt=""` (le nom du client est déjà dans le lien), posée sur un fond `ink` (repli si l'image ne charge pas) et recouverte d'un voile `ink` à 55 % pour le contraste (3,4:1 minimum sur une zone blanche). Le nom du client reste centré par-dessus, identique au cas sans image
 - Légende dessous, 14px, `muted-strong`, en flex `justify-between` : sous-titre suivi de `→` à gauche, années à droite
 - Survol et focus clavier : la légende passe en `ochre`, l'image zoome légèrement (voir Animations)
 
