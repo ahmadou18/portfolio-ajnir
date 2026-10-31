@@ -116,7 +116,7 @@ Filet au-dessus (`border-t border-ink/20`), padding-top 12px, flex `justify-betw
 1. SiteHeader
 2. PageHeading
 3. Intro (max 540px), 40px sous le titre :
-   - « Je suis Ahmadou Gueye, développeur front-end freelance basé à Paris, spécialisé en Vue.js, Nuxt et React. Depuis 2017, je conçois des interfaces rapides, accessibles et faciles à maintenir pour des entreprises comme Accor, Dalkia ou Maisons du Monde. »
+   - « Je suis Ahmadou Gueye, développeur front-end freelance, spécialisé en Vue.js, Nuxt et React. Depuis 2019, je conçois des interfaces rapides, accessibles et faciles à maintenir pour des entreprises comme Accor, Dalkia ou Maisons du Monde. »
    - En `muted-strong` : « Du e-commerce à l'énergie, en passant par l'hôtellerie : Design Systems, performance et accessibilité. »
 4. Section « Projets sélectionnés » : SectionHeader + grille de 4 projets (Accor, Dalkia, Savelys, Maisons du Monde)
 5. SiteFooter
@@ -169,7 +169,7 @@ Dans un `<article>` pleine largeur (seul le contenu texte, point 5, est limité 
 | 2021–2022 | OpenClassrooms | Mentor développement front-end | — |
 | 2020–2021 | Maisons du Monde | Développeur front-end | maisons-du-monde |
 | 2019 | Mazarine | Développeur front-end | nestle-waters, opera-de-paris |
-| 2017–2018 | Clemenvilla | Développeur web | clemenvilla |
+| 2017–2018 | Clemenvilla | Développeur web en alternance | clemenvilla |
 
 ## Animations
 

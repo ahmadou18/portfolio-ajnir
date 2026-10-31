@@ -95,8 +95,8 @@ Pas de couleur dans les données : `ProjectGrid` la calcule selon la position (d
 
 1. ✅ Setup + premier îlot Fancy
 2. ✅ Structure : layout, nav, composants `.astro` vs `.tsx`
-3. ⏳ Content Collections + route dynamique `projects/[slug].astro`
-4. Micro-interactions en CSS et scripts natifs Astro
-5. SEO/GEO : meta, Open Graph, sitemap, JSON-LD `Person`, `llms.txt`
-6. Perf et accessibilité (Lighthouse, `prefers-reduced-motion`)
-7. Déploiement
+3. ✅ Content Collections + route dynamique `projects/[slug].astro`
+4. ✅ Micro-interactions en CSS et scripts natifs Astro
+5. ✅ SEO/GEO : meta, Open Graph, sitemap, JSON-LD `Person`, `llms.txt`
+6. ✅ Perf et accessibilité (Lighthouse, `prefers-reduced-motion`)
+7. ✅ Déploiement
