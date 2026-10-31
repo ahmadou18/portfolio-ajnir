@@ -28,10 +28,11 @@ const coverImage = project.data.image;
 const shareImage = coverImage
   ? await getImage({
       src: coverImage,
-      width: 1200,
-      height: 630,
+      width: 2400,
+      height: 1260,
       fit: "cover",
       format: "jpg",
+      quality: 85,
     })
   : undefined;
 ---
