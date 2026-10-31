@@ -3,17 +3,17 @@ import Logo from "@/assets/logo.svg";
 import { site } from "@/config";
 
 const navigationLinks = [
-  { label: "Projets", href: "/projects" },
+  { label: "Projets", href: "/projects/" },
   { label: "À propos", href: "/#a-propos" },
-  { label: "CV", href: "/resume" },
+  { label: "CV", href: "/resume/" },
   { label: "Contact", href: "#contact" },
 ];
 
-const currentPath = Astro.url.pathname.replace(/\/$/, "");
+const currentPath = Astro.url.pathname.replace(/\/?$/, "/");
 
 function isCurrentPage(href: string) {
   if (!href.startsWith("/") || href.includes("#")) return false;
-  return currentPath === href || currentPath.startsWith(`${href}/`);
+  return currentPath.startsWith(href);
 }
 ---
 

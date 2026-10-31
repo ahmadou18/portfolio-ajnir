@@ -90,16 +90,16 @@ const { Content } = await render(project);
       class="mt-24 grid gap-4 border-t border-ink/20 pt-4 text-sm sm:grid-cols-[1fr_auto_1fr]"
     >
       <a
-        href={`/projects/${previousProject.id}`}
+        href={`/projects/${previousProject.id}/`}
         rel="prev"
         data-transition="previous"
       >
         <span aria-hidden="true">←</span> Projet précédent :{" "}
         {previousProject.data.title}
       </a>
-      <a href="/projects">Tous les projets</a>
+      <a href="/projects/">Tous les projets</a>
       <a
-        href={`/projects/${nextProject.id}`}
+        href={`/projects/${nextProject.id}/`}
         rel="next"
         data-transition="next"
         class="sm:text-right"
