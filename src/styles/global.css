@@ -35,46 +35,91 @@
   }
 }
 
-header {
-  view-transition-name: site-header;
-}
-
+/* (*) cible aussi les couvertures nommées ; le header est neutralisé plus bas */
 html:active-view-transition-type(next) {
-  &::view-transition-old(root) {
-    animation: 300ms ease-in both slide-out-to-left;
+  &::view-transition-old(*) {
+    animation: 200ms ease-in both fade-out-to-left;
   }
-  &::view-transition-new(root) {
-    animation: 300ms ease-out both slide-in-from-right;
+  &::view-transition-new(*) {
+    animation: 300ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both fade-in-from-right;
   }
 }
 
 html:active-view-transition-type(previous) {
-  &::view-transition-old(root) {
-    animation: 300ms ease-in both slide-out-to-right;
+  &::view-transition-old(*) {
+    animation: 200ms ease-in both fade-out-to-right;
   }
-  &::view-transition-new(root) {
-    animation: 300ms ease-out both slide-in-from-left;
+  &::view-transition-new(*) {
+    animation: 300ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both fade-in-from-left;
   }
 }
 
-@keyframes slide-out-to-left {
-  to {
-    transform: translateX(-100%);
+html:active-view-transition-type(next, previous) {
+  /* Rideau : l'ancienne couverture reste en place, la nouvelle la recouvre */
+  &::view-transition-old(.project-cover) {
+    animation: none;
   }
 }
-@keyframes slide-out-to-right {
-  to {
-    transform: translateX(100%);
+
+html:active-view-transition-type(next)::view-transition-new(.project-cover) {
+  animation: 700ms cubic-bezier(0.65, 0, 0.35, 1) both wipe-from-right;
+}
+
+html:active-view-transition-type(previous)::view-transition-new(.project-cover) {
+  animation: 700ms cubic-bezier(0.65, 0, 0.35, 1) both wipe-from-left;
+}
+
+/* Header immobile sur toutes les transitions : pas de déplacement du groupe,
+   seul le nouveau snapshot affiché (sinon plus-lighter additionne les deux).
+   Les couvertures propres à la nouvelle page sont empilées en dernier :
+   le header doit rester au-dessus, comme son z-10 dans la page.
+   html:root égale la spécificité des règles (*) ci-dessus, et l'emporte car placé après */
+html:root {
+  &::view-transition-group(site-header) {
+    z-index: 1;
+    animation: none;
+  }
+  &::view-transition-old(site-header) {
+    display: none;
+  }
+  &::view-transition-new(site-header) {
+    animation: none;
   }
 }
-@keyframes slide-in-from-right {
+
+@keyframes wipe-from-right {
   from {
-    transform: translateX(100%);
+    clip-path: inset(0 0 0 100%);
   }
 }
-@keyframes slide-in-from-left {
+@keyframes wipe-from-left {
   from {
-    transform: translateX(-100%);
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+@keyframes fade-out-to-left {
+  to {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+}
+@keyframes fade-out-to-right {
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+@keyframes fade-in-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+@keyframes fade-in-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
   }
 }
 
