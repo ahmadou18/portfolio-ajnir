@@ -4,11 +4,12 @@ import SectionHeader from "@/components/SectionHeader.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProjectGrid from "@/components/ProjectGrid.astro";
 import { getFeaturedProjects } from "@/lib/projects";
+import { site } from "@/config";
 
 const featuredProjects = await getFeaturedProjects();
 const person = {
   "@type": "Person",
-  name: "Ahmadou Gueye",
+  name: site.name,
   jobTitle: "Développeur front-end",
   url: Astro.site?.href,
   address: {
@@ -16,13 +17,8 @@ const person = {
     addressLocality: "Paris",
     addressCountry: "FR",
   },
-  email: "ahmadou.gue@gmail.com",
-  sameAs: [
-    "https://www.linkedin.com/in/ahmadou-gueye",
-    "https://github.com/ahmadou18",
-    "https://www.malt.fr/profile/ahmadougueye",
-    "https://www.collective.work/profile/ahmadou-gueye"
-  ],
+  email: site.email,
+  sameAs: [site.linkedinUrl, site.githubUrl, site.maltUrl, site.collectiveUrl],
   knowsAbout: [
     "Développement front-end",
     "Vue.js",

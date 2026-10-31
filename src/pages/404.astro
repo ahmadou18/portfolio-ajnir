@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeading from "@/components/PageHeading.astro";
 import ProjectCover from "@/components/ProjectCover.astro";
 import { getSortedProjects } from "@/lib/projects";
+import { site } from "@/config";
 
 const projectCount = (await getSortedProjects()).length;
 
@@ -25,7 +26,7 @@ const destinations = [
   {
     label: "Contact",
     description: "Écrivez-moi directement",
-    href: "mailto:ahmadou.gue@gmail.com",
+    href: `mailto:${site.email}`,
   },
 ];
 ---
