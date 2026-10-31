@@ -11,6 +11,10 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
+  build: {
+    inlineStylesheets: "always",
+  },
+
   image: {
     domains: ["images.unsplash.com"],
   },

@@ -10,8 +10,9 @@ interface Props {
   image?: ImageMetadata | string;
   color: CoverColor;
   variant: "card" | "hero";
+  priority?: boolean;
 }
-const { title, image, color, variant, slug} = Astro.props;
+const { title, image, color, variant, slug, priority = false } = Astro.props;
 
 const backgroundByColor: Record<CoverColor, string> = {
   ink: "bg-ink",
@@ -27,7 +28,7 @@ const optionsByVariant: Record<
     title: "text-5xl",
     image:
       "motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105",
-    sizes: "(min-width: 640px) 50vw, 100vw",
+    sizes: "(min-width: 640px) calc(50vw - 46px), calc(100vw - 76px)",
   },
   hero: {
     frame: "aspect-[16/10] sm:aspect-[3/1]",
@@ -36,6 +37,10 @@ const optionsByVariant: Record<
     sizes: "100vw",
   },
 };
+
+// The hero is always the LCP; a card only when it is the first one above the fold.
+const isPriority = variant === "hero" || priority;
+const imageWidths = [400, 640, 800, 1200, 1600, 2400];
 ---
 
 <div
@@ -43,7 +48,7 @@ const optionsByVariant: Record<
   class:list={[
     "relative grid place-items-center overflow-hidden rounded-xs text-paper [view-transition-class:project-cover]",
     optionsByVariant[variant].frame,
-    !image && backgroundByColor[color],
+    image ? "bg-ink" : backgroundByColor[color],
   ]}
 >
   {image && (
@@ -53,8 +58,11 @@ const optionsByVariant: Record<
           src={image}
           alt=""
           inferSize
-          widths={[480, 960, 1600, 2400]}
+          widths={imageWidths}
+          quality={70}
           sizes={optionsByVariant[variant].sizes}
+          loading={isPriority ? "eager" : "lazy"}
+          fetchpriority={isPriority ? "high" : "auto"}
           class:list={[
             "absolute inset-0 size-full object-cover",
             optionsByVariant[variant].image,
@@ -64,15 +72,18 @@ const optionsByVariant: Record<
         <Image
           src={image}
           alt=""
-          widths={[480, 960, 1600, 2400]}
+          widths={imageWidths}
+          quality={70}
           sizes={optionsByVariant[variant].sizes}
+          loading={isPriority ? "eager" : "lazy"}
+          fetchpriority={isPriority ? "high" : "auto"}
           class:list={[
             "absolute inset-0 size-full object-cover",
             optionsByVariant[variant].image,
           ]}
         />
       )}
-      <div class="absolute inset-0 bg-ink/40" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-ink/55" aria-hidden="true"></div>
     </>
   )}
   <span
