@@ -4,6 +4,7 @@ import { getSortedProjects } from "@/lib/projects";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeading from "@/components/PageHeading.astro";
 import ProjectCover from "@/components/ProjectCover.astro";
+import { getImage } from "astro:assets";
 
 export async function getStaticPaths() {
   const projects = await getSortedProjects();
@@ -19,13 +20,27 @@ export async function getStaticPaths() {
   }));
 }
 
+
 const { project, previousProject, nextProject } = Astro.props;
 const { Content } = await render(project);
+const coverImage = project.data.image;
+
+const shareImage = coverImage
+  ? await getImage({
+      src: coverImage,
+      width: 1200,
+      height: 630,
+      fit: "cover",
+      format: "jpg",
+    })
+  : undefined;
 ---
 
 <BaseLayout
   title={`${project.data.title} — Ahmadou Gueye`}
   description={project.data.subtitle}
+  image={shareImage?.src}
+  type="article"
 >
   <script is:inline slot="head">
     addEventListener("pageswap", (event) => {

@@ -6,12 +6,60 @@ import ProjectGrid from "@/components/ProjectGrid.astro";
 import { getFeaturedProjects } from "@/lib/projects";
 
 const featuredProjects = await getFeaturedProjects();
+const person = {
+  "@type": "Person",
+  name: "Ahmadou Gueye",
+  jobTitle: "Développeur front-end",
+  url: Astro.site?.href,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Paris",
+    addressCountry: "FR",
+  },
+  email: "ahmadou.gue@gmail.com",
+  sameAs: [
+    "https://www.linkedin.com/in/ahmadou-gueye",
+    "https://github.com/ahmadou18",
+    "https://www.malt.fr/profile/ahmadougueye",
+    "https://www.collective.work/profile/ahmadou-gueye"
+  ],
+  knowsAbout: [
+    "Développement front-end",
+    "Vue.js",
+    "Nuxt",
+    "React",
+    "Next.js",
+    "AEM",
+    "JavaScript",
+    "Astro",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "Tailwind CSS",
+    "Design System",
+    "Storybook",
+    "Accessibilité web (WCAG)",
+    "Core Web Vitals",
+  ],
+};
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: Astro.site?.href,
+  mainEntity: person,
+};
 ---
 
 <BaseLayout
   title="Ahmadou Gueye — Développeur front-end à Paris"
-  description="J'aide les équipes à construire des interfaces Vue et React rapides, accessibles et faciles à maintenir."
+  description="Ahmadou Gueye, développeur front-end freelance à Paris, spécialisé en Vue.js, Nuxt et React. Interfaces rapides et accessibles pour Accor et Dalkia."
 >
+
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(profilePageSchema)}
+  />
   <PageHeading
     title="Ahmadou Gueye"
     subtitle="Développeur front-end à Paris"
@@ -19,12 +67,11 @@ const featuredProjects = await getFeaturedProjects();
 
   <section id="a-propos" class="mt-10 max-w-[540px] space-y-3 scroll-mt-28">
     <p>
-      J’aide les équipes à construire des interfaces Vue et React rapides,
-      accessibles et faciles à maintenir.
+      Je suis Ahmadou Gueye, développeur front-end freelance basé à Paris, spécialisé en Vue.js, Nuxt et React. Depuis 2017, je conçois des interfaces rapides, accessibles et faciles à maintenir pour des entreprises comme Accor, Dalkia ou Maisons du Monde.
     </p>
     <p class="text-muted-strong">
-      Du e-commerce à l’énergie : Accor, Maisons du Monde, Dalkia, Savelys. Vue
-      3, Nuxt, React, Astro.
+      Du e-commerce à l’énergie, en passant par l’hôtellerie : Design Systems,
+      performance et accessibilité.
     </p>
   </section>
 
