@@ -1,11 +1,12 @@
 import type { APIRoute } from "astro";
 import { getSortedProjects } from "@/lib/projects";
+import { site as siteConfig } from "@/config";
 
 const profileLinks = [
-  { label: "LinkedIn", url: "https://www.linkedin.com/in/ahmadou-gueye" },
-  { label: "GitHub", url: "https://github.com/ahmadou18" },
-  { label: "Malt", url: "https://www.malt.fr/profile/ahmadougueye" },
-  { label: "Collective", url: "https://www.collective.work/profile/ahmadou-gueye" },
+  { label: "LinkedIn", url: siteConfig.linkedinUrl },
+  { label: "GitHub", url: siteConfig.githubUrl },
+  { label: "Malt", url: siteConfig.maltUrl },
+  { label: "Collective", url: siteConfig.collectiveUrl },
 ];
 
 const skills = [
@@ -49,7 +50,7 @@ export const GET: APIRoute = async ({ site }) => {
     "",
     "## Contact",
     "",
-    "- Email : ahmadou.gue@gmail.com",
+    `- Email : ${siteConfig.email}`,
     ...profileLinks.map(({ label, url }) => `- [${label}](${url})`),
     "",
   ].join("\n");

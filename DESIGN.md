@@ -116,8 +116,8 @@ Filet au-dessus (`border-t border-ink/20`), padding-top 12px, flex `justify-betw
 1. SiteHeader
 2. PageHeading
 3. Intro (max 540px), 40px sous le titre :
-   - « J'aide les équipes à construire des interfaces Vue et React rapides, accessibles et faciles à maintenir. »
-   - En `muted-strong` : « Du e-commerce à l'énergie : Accor, Maisons du Monde, Dalkia, Savelys. Vue 3, Nuxt, React, Astro. »
+   - « Je suis Ahmadou Gueye, développeur front-end freelance basé à Paris, spécialisé en Vue.js, Nuxt et React. Depuis 2017, je conçois des interfaces rapides, accessibles et faciles à maintenir pour des entreprises comme Accor, Dalkia ou Maisons du Monde. »
+   - En `muted-strong` : « Du e-commerce à l'énergie, en passant par l'hôtellerie : Design Systems, performance et accessibilité. »
 4. Section « Projets sélectionnés » : SectionHeader + grille de 4 projets (Accor, Dalkia, Savelys, Maisons du Monde)
 5. SiteFooter
 
