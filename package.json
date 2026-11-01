@@ -13,7 +13,9 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test:a11y": "pa11y-ci --sitemap http://localhost:4321/sitemap-0.xml --sitemap-find https://ajnir-portfolio.netlify.app --sitemap-replace http://localhost:4321"
+    "test:a11y": "pa11y-ci --sitemap http://localhost:4321/sitemap-0.xml --sitemap-find https://ajnir.com --sitemap-replace http://localhost:4321",
+    "preview:cloudflare": "astro build && wrangler dev",
+    "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
@@ -33,6 +35,7 @@
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^1.1.2",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "typescript-eslint": "^8.72.1"
+    "typescript-eslint": "^8.72.1",
+    "wrangler": "^4.156.0"
   }
 }
