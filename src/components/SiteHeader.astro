@@ -4,9 +4,8 @@ import { site } from "@/config";
 
 const navigationLinks = [
   { label: "Projets", href: "/projects/" },
-  { label: "À propos", href: "/#a-propos" },
   { label: "CV", href: "/resume/" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact/" },
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/?$/, "/");
@@ -34,7 +33,7 @@ function isCurrentPage(href: string) {
       aria-label="Navigation principale"
       class="col-span-2 row-start-2 sm:col-span-1 sm:col-start-2 sm:row-start-1"
     >
-      <ul class="grid grid-cols-2 gap-x-6 sm:grid-cols-4">
+      <ul class="grid grid-cols-3 gap-x-6">
         {navigationLinks.map(({ label, href }) => (
           <li>
             <a

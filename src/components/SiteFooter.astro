@@ -2,6 +2,11 @@
 import CopyEmailButton from "@/components/CopyEmailButton.astro";
 import { site } from "@/config";
 
+interface Props {
+  showCopyButton?: boolean;
+}
+const { showCopyButton = true } = Astro.props;
+
 const socialLinks = [
   { label: site.email, href: `mailto:${site.email}`, copyValue: site.email },
   { label: "LinkedIn", href: site.linkedinUrl },
@@ -9,12 +14,12 @@ const socialLinks = [
 ];
 ---
 
-<footer id="contact" class="mt-30 scroll-mt-28 border-t border-ink/20 pt-4 text-sm">
+<footer class="mt-30 border-t border-ink/20 pt-4 text-sm">
   <ul class="flex flex-wrap gap-x-6 gap-y-2">
     {socialLinks.map(({ label, href, copyValue }) => (
       <li>
         <a href={href}>{label}</a>
-        {copyValue && <CopyEmailButton email={copyValue} />}
+        {showCopyButton && copyValue && <CopyEmailButton email={copyValue} />}
       </li>
     ))}
     <li class="ml-auto text-muted-strong">Paris</li>

@@ -1,8 +1,16 @@
 ---
 interface Props {
   email: string;
+  size?: "small" | "large";
 }
-const { email } = Astro.props;
+const { email, size = "small" } = Astro.props;
+
+// Zone cliquable : 24px (icône 14 + 2×5) ou 44px (icône 20 + 2×12)
+const sizes = {
+  small: { iconSize: 14, buttonClass: "-m-[5px] p-[5px]" },
+  large: { iconSize: 20, buttonClass: "p-3 leading-[0]" },
+};
+const { iconSize, buttonClass } = sizes[size];
 ---
 
 <button
@@ -10,13 +18,13 @@ const { email } = Astro.props;
   data-copy-email={email}
   hidden
   aria-label="Copier l'adresse email"
-  class="-m-[5px] cursor-pointer p-[5px] text-muted-strong transition-colors hover:text-ochre focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+  class:list={[buttonClass, "cursor-pointer text-muted-strong transition-colors hover:text-ochre focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"]}
 >
   <svg
     data-copy-icon
     viewBox="0 0 24 24"
-    width="14"
-    height="14"
+    width={iconSize}
+    height={iconSize}
     fill="none"
     stroke="currentColor"
     stroke-width="1.75"
@@ -31,8 +39,8 @@ const { email } = Astro.props;
     data-copied-icon
     hidden
     viewBox="0 0 24 24"
-    width="14"
-    height="14"
+    width={iconSize}
+    height={iconSize}
     fill="none"
     stroke="currentColor"
     stroke-width="1.75"

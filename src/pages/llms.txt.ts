@@ -47,6 +47,7 @@ export const GET: APIRoute = async ({ site }) => {
     "",
     `- [CV](${toAbsoluteUrl("/resume/")}) : parcours complet, compétences, CV téléchargeable en PDF`,
     `- [Tous les projets](${toAbsoluteUrl("/projects/")})`,
+    `- [Contact](${toAbsoluteUrl("/contact/")}) : email, disponibilité, profils freelance`,
     "",
     "## Contact",
     "",
