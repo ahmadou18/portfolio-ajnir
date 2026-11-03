@@ -1,0 +1,80 @@
+---
+import PageHeading from "@/components/PageHeading.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectGrid from "@/components/ProjectGrid.astro";
+import { getFeaturedProjects } from "@/lib/projects";
+import { site } from "@/config";
+import type { Lang } from "@/i18n/ui";
+import { getLocalizedPath, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const featuredProjects = await getFeaturedProjects(lang);
+const person = {
+  "@type": "Person",
+  name: site.name,
+  alternateName: "Ajnir",
+  jobTitle: "Développeur front-end",
+  url: Astro.site?.href,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Paris",
+    addressCountry: "FR",
+  },
+  email: site.email,
+  sameAs: [site.linkedinUrl, site.githubUrl, site.maltUrl, site.collectiveUrl],
+  knowsAbout: [
+    "Développement front-end",
+    "Vue.js",
+    "Nuxt",
+    "React",
+    "Next.js",
+    "AEM",
+    "JavaScript",
+    "Astro",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "Tailwind CSS",
+    "Design System",
+    "Storybook",
+    "Accessibilité web (WCAG)",
+    "Core Web Vitals",
+  ],
+};
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: Astro.site?.href,
+  mainEntity: person,
+};
+---
+
+<BaseLayout title={t("meta.homeTitle")} description={t("meta.homeDescription")}>
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(profilePageSchema)}
+  />
+  <PageHeading title={site.name} subtitle={t("home.subtitle")} />
+
+  <section id="a-propos" class="mt-10 max-w-[540px] space-y-3 scroll-mt-28">
+    <p>{t("home.intro")}</p>
+    <p class="text-muted-strong">{t("home.introSecondary")}</p>
+  </section>
+
+  <section class="mt-24">
+    <SectionHeader
+      title={t("home.selectedProjects")}
+      linkLabel={t("home.seeAll")}
+      linkContext={t("home.seeAllContext")}
+      linkHref={getLocalizedPath(lang, "/projects/")}
+    />
+    <ProjectGrid projects={featuredProjects} />
+  </section>
+</BaseLayout>

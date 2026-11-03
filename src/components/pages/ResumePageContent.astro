@@ -1,0 +1,122 @@
+---
+import PageHeading from "@/components/PageHeading.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getSortedExperiences } from "@/lib/projects";
+import type { Lang } from "@/i18n/ui";
+import { getLocalizedPath, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const experiences = await getSortedExperiences(lang);
+
+const skillGroups = [
+  {
+    title: t("resume.skillGroupFrontEnd"),
+    skills: "Vue 3, Nuxt, React, Next.js, Astro, TypeScript, JavaScript",
+  },
+  {
+    title: t("resume.skillGroupInterface"),
+    skills: "Tailwind CSS, Sass, Nuxt UI, Design Systems, Storybook",
+  },
+  { title: t("resume.skillGroupQuality"), skills: t("resume.qualitySkills") },
+  {
+    title: t("resume.skillGroupCms"),
+    skills: "Strapi, Sanity, Prismic, Drupal, Python / Flask, Laravel, NodeJS",
+  },
+  { title: t("resume.skillGroupTools"), skills: "GitLab CI, Docker, Figma" },
+];
+
+const spokenLanguages = [
+  { name: t("resume.french"), level: t("resume.frenchLevel") },
+  { name: t("resume.english"), level: t("resume.englishLevel") },
+];
+---
+
+<BaseLayout
+  title={t("meta.resumeTitle")}
+  description={t("meta.resumeDescription")}
+>
+  <PageHeading title={t("resume.title")} subtitle={t("resume.subtitle")} />
+
+  <p class="mt-10">
+    <a
+      href="/CV_Gueye_Ahmadou.pdf"
+      download
+      class="inline-flex items-center gap-2 border-b border-ink pb-1 text-[13px] font-medium tracking-[0.04em] uppercase"
+    >
+      {t("resume.download")} <span aria-hidden="true">↓</span>
+    </a>
+  </p>
+
+  <section class="mt-18">
+    <SectionHeader title={t("resume.experience")} />
+    <ol>
+      {experiences.map(({ company, years, role, description, linkedProjects }) => (
+        <li class="grid gap-1 border-t border-ink/20 py-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6">
+          <span class="text-[14px] text-muted-strong">{years}</span>
+          <div>
+            <h3 class="font-serif text-[22px] leading-[1.3]">{company}</h3>
+            <p class="mt-0.5 text-[14px] text-muted-strong">{role}</p>
+            <p class="mt-2 max-w-[620px]">{description}</p>
+            {linkedProjects.length > 0 && (
+              <p class="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[14px]">
+                {linkedProjects.map((project) => (
+                  <a href={getLocalizedPath(lang, `/projects/${project.id}/`)}>
+                    {linkedProjects.length > 1 ? (
+                      project.data.title
+                    ) : (
+                      <>
+                        {t("resume.seeProject")}
+                        <span class="sr-only"> {project.data.title}</span>
+                      </>
+                    )}
+                    <span aria-hidden="true"> →</span>
+                  </a>
+                ))}
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="mt-24">
+    <SectionHeader title={t("resume.skills")} />
+    <div class="grid gap-5 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-6">
+      {skillGroups.map(({ title, skills }) => (
+        <div>
+          <h3 class="text-[14px] font-medium">{title}</h3>
+          <p class="mt-1 text-muted-strong">{skills}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-24">
+    <SectionHeader title={t("resume.education")} />
+    <div class="grid gap-1 border-t border-ink/20 py-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6">
+      <span class="text-[14px] text-muted-strong">2018</span>
+      <div>
+        <h3 class="font-serif text-[22px] leading-[1.3]">{t("resume.degree")}</h3>
+        <p class="mt-0.5 text-[14px] text-muted-strong">{t("resume.school")}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-24">
+    <SectionHeader title={t("resume.languages")} />
+    <ul class="space-y-1">
+      {spokenLanguages.map(({ name, level }) => (
+        <li>
+          {name}<span class="text-muted-strong">{t("punctuation.colon")} {level}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

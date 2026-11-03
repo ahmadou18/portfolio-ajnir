@@ -1,0 +1,27 @@
+---
+import PageHeading from "@/components/PageHeading.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectGrid from "@/components/ProjectGrid.astro";
+import { getSortedProjects } from "@/lib/projects";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const projects = await getSortedProjects(lang);
+---
+
+<BaseLayout
+  title={t("meta.projectsTitle")}
+  description={t("meta.projectsDescription")}
+>
+  <PageHeading title={t("projects.title")} subtitle={t("projects.subtitle")} />
+
+  <div class="mt-18">
+    <ProjectGrid projects={projects} prioritizeFirst />
+  </div>
+</BaseLayout>

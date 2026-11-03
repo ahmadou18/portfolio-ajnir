@@ -5,5 +5,5 @@ export const site = {
   githubUrl: "https://github.com/ahmadou18",
   maltUrl: "https://www.malt.fr/profile/ahmadougueye",
   collectiveUrl: "https://www.collective.work/profile/ahmadou-gueye",
-  availability: "Disponible maintenant",
+  availability: { fr: "Disponible maintenant", en: "Available now" },
 };

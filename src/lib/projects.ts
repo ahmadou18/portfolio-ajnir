@@ -19,6 +19,21 @@ export async function getSortedProjects(lang: Lang) {
   return projects.toSorted((a, b) => a.data.order - b.data.order);
 }
 
+/** Static paths of the project pages, with previous and next projects (the list loops). */
+export async function getProjectPaths(lang: Lang) {
+  const projects = await getSortedProjects(lang);
+
+  return projects.map((project, index) => ({
+    params: { slug: project.id },
+    props: {
+      project,
+      previousProject:
+        projects[(index - 1 + projects.length) % projects.length],
+      nextProject: projects[(index + 1) % projects.length],
+    },
+  }));
+}
+
 export async function getFeaturedProjects(lang: Lang) {
   const projects = await getSortedProjects(lang);
 

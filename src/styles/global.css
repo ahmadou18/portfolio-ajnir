@@ -2,6 +2,9 @@
 @import "@fontsource-variable/fraunces";
 @import "@fontsource-variable/inter";
 
+/* The config is not markup: `filter` in the sitemap options would generate a class */
+@source not "../../astro.config.mjs";
+
 @theme {
   --color-frame: #e3dbcf;
   --color-paper: #f4efe6;
