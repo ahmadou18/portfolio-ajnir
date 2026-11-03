@@ -17,3 +17,14 @@ export function useTranslations(lang: Lang) {
 export function getLocalizedPath(lang: Lang, path: string): string {
   return getRelativeLocaleUrl(lang, path.replace(/^\//, ""));
 }
+
+/** The current page in another language: `/en/projects/accor/` → `/projects/accor/` (fr). */
+export function getTranslatedPath(url: URL, lang: Lang): string {
+  const currentLang = getLangFromUrl(url);
+  const pathWithoutLang =
+    currentLang === defaultLang
+      ? url.pathname
+      : url.pathname.slice(`/${currentLang}`.length);
+
+  return getLocalizedPath(lang, pathWithoutLang);
+}

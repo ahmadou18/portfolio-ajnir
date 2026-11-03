@@ -21,6 +21,7 @@ export const GET: APIRoute = async ({ site }) => {
   if (!site) throw new Error("L'URL du site n'est pas configurée.");
 
   const projects = await getSortedProjects("fr");
+  const englishProjects = await getSortedProjects("en");
   const toAbsoluteUrl = (path: string) => new URL(path, site).href;
 
   const projectLines = projects.map(
@@ -48,6 +49,19 @@ export const GET: APIRoute = async ({ site }) => {
     `- [CV](${toAbsoluteUrl("/resume/")}) : parcours complet, compétences, CV téléchargeable en PDF`,
     `- [Tous les projets](${toAbsoluteUrl("/projects/")})`,
     `- [Contact](${toAbsoluteUrl("/contact/")}) : email, disponibilité, profils freelance`,
+    "",
+    "## Version anglaise",
+    "",
+    "Le site existe aussi en anglais, sous /en/ :",
+    "",
+    `- [Home](${toAbsoluteUrl("/en/")})`,
+    `- [Projects](${toAbsoluteUrl("/en/projects/")})`,
+    ...englishProjects.map(
+      (project) =>
+        `  - [${project.data.title}](${toAbsoluteUrl(`/en/projects/${project.id}/`)}) : ${project.data.subtitle}`,
+    ),
+    `- [Resume](${toAbsoluteUrl("/en/resume/")})`,
+    `- [Contact](${toAbsoluteUrl("/en/contact/")})`,
     "",
     "## Contact",
     "",

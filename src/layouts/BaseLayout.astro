@@ -1,7 +1,8 @@
 ---
 import SiteFooter from "@/components/SiteFooter.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { defaultLang, languages, type Lang } from "@/i18n/ui";
+import { getLangFromUrl, getTranslatedPath, useTranslations } from "@/i18n/utils";
 import "@/styles/global.css";
 
 interface Props {
@@ -14,12 +15,18 @@ interface Props {
 }
 
 const { title, description, image = "/og-default.jpg", type = "website", noindex = false, showFooterCopyButton = true } = Astro.props;
-const t = useTranslations(getLangFromUrl(Astro.url));
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const imageUrl = new URL(image, Astro.site);
+
+const ogLocaleByLang: Record<Lang, string> = { fr: "fr_FR", en: "en_US" };
+const allLangs = Object.keys(languages) as Lang[];
+const getTranslatedUrl = (targetLang: Lang) =>
+  new URL(getTranslatedPath(Astro.url, targetLang), Astro.site);
 ---
 
-<html lang="fr">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,11 +35,22 @@ const imageUrl = new URL(image, Astro.site);
     {noindex
       ? <meta name="robots" content="noindex" />
       : <link rel="canonical" href={canonicalUrl} />}
+    {!noindex && allLangs.map((alternateLang) => (
+      <link rel="alternate" hreflang={alternateLang} href={getTranslatedUrl(alternateLang)} />
+    ))}
+    {!noindex && (
+      <link rel="alternate" hreflang="x-default" href={getTranslatedUrl(defaultLang)} />
+    )}
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content="Ahmadou Gueye" />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content={ogLocaleByLang[lang]} />
+    {allLangs
+      .filter((alternateLang) => alternateLang !== lang)
+      .map((alternateLang) => (
+        <meta property="og:locale:alternate" content={ogLocaleByLang[alternateLang]} />
+      ))}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />

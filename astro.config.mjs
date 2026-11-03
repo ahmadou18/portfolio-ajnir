@@ -43,7 +43,10 @@ export default defineConfig({
   },
 
   integrations: [
-    sitemap({ filter: (page) => !page.endsWith("/404/") }),
+    sitemap({
+      filter: (page) => !page.endsWith("/404/"),
+      i18n: { defaultLocale: "fr", locales: { fr: "fr", en: "en" } },
+    }),
     localizedNotFoundPage(),
   ],
 });

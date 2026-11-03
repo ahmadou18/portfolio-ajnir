@@ -15,8 +15,10 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const featuredProjects = await getFeaturedProjects(lang);
+// Same Person in both languages: the @id lets search engines merge them.
 const person = {
   "@type": "Person",
+  "@id": new URL("#person", Astro.site).href,
   name: site.name,
   alternateName: "Ajnir",
   jobTitle: "Développeur front-end",
@@ -50,7 +52,8 @@ const person = {
 const profilePageSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  url: Astro.site?.href,
+  url: new URL(getLocalizedPath(lang, "/"), Astro.site).href,
+  inLanguage: lang,
   mainEntity: person,
 };
 ---
