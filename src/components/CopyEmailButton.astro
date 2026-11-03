@@ -1,11 +1,14 @@
 ---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
 interface Props {
   email: string;
   size?: "small" | "large";
 }
 const { email, size = "small" } = Astro.props;
 
-// Zone cliquable : 24px (icône 14 + 2×5) ou 44px (icône 20 + 2×12)
+const t = useTranslations(getLangFromUrl(Astro.url));
+
 const sizes = {
   small: { iconSize: 14, buttonClass: "-m-[5px] p-[5px]" },
   large: { iconSize: 20, buttonClass: "p-3 leading-[0]" },
@@ -16,8 +19,9 @@ const { iconSize, buttonClass } = sizes[size];
 <button
   type="button"
   data-copy-email={email}
+  data-copied-message={t("copy.done")}
   hidden
-  aria-label="Copier l'adresse email"
+  aria-label={t("copy.label")}
   class:list={[buttonClass, "cursor-pointer text-muted-strong transition-colors hover:text-ochre focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"]}
 >
   <svg
@@ -37,7 +41,7 @@ const { iconSize, buttonClass } = sizes[size];
   </svg>
   <svg
     data-copied-icon
-    hidden
+    class="hidden"
     viewBox="0 0 24 24"
     width={iconSize}
     height={iconSize}
@@ -75,14 +79,14 @@ const { iconSize, buttonClass } = sizes[size];
         return;
       }
 
-      copyIcon?.toggleAttribute("hidden", true);
-      copiedIcon?.toggleAttribute("hidden", false);
-      if (status) status.textContent = "Email copié";
+      copyIcon?.classList.toggle("hidden", true);
+      copiedIcon?.classList.toggle("hidden", false);
+      if (status) status.textContent = button.dataset.copiedMessage ?? "";
 
       clearTimeout(resetTimer);
       resetTimer = setTimeout(() => {
-        copyIcon?.toggleAttribute("hidden", false);
-        copiedIcon?.toggleAttribute("hidden", true);
+        copyIcon?.classList.toggle("hidden", false);
+        copiedIcon?.classList.toggle("hidden", true);
         if (status) status.textContent = "";
       }, 2000);
     });

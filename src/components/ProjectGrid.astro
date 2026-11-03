@@ -2,6 +2,7 @@
 import ProjectCard from "@/components/ProjectCard.astro";
 import type { CollectionEntry } from "astro:content";
 import type { CoverColor } from "@/components/ProjectCover.astro";
+import { getLangFromUrl, getLocalizedPath } from "@/i18n/utils";
 
 interface Props {
   projects: CollectionEntry<"projects">[];
@@ -9,6 +10,8 @@ interface Props {
   prioritizeFirst?: boolean;
 }
 const { projects, prioritizeFirst = false } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
 
 function getCheckerColor(index: number): CoverColor {
   const row = Math.floor(index / 2);
@@ -23,7 +26,7 @@ function getCheckerColor(index: number): CoverColor {
     <ProjectCard
       {...project.data}
       color={getCheckerColor(index)}
-      href={`/projects/${project.id}/`}
+      href={getLocalizedPath(lang, `/projects/${project.id}/`)}
       slug={project.id}
       priority={prioritizeFirst && index === 0}
     />

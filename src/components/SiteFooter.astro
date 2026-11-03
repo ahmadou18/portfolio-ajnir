@@ -1,11 +1,14 @@
 ---
 import CopyEmailButton from "@/components/CopyEmailButton.astro";
 import { site } from "@/config";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 interface Props {
   showCopyButton?: boolean;
 }
 const { showCopyButton = true } = Astro.props;
+
+const t = useTranslations(getLangFromUrl(Astro.url));
 
 const socialLinks = [
   { label: site.email, href: `mailto:${site.email}`, copyValue: site.email },
@@ -22,6 +25,6 @@ const socialLinks = [
         {showCopyButton && copyValue && <CopyEmailButton email={copyValue} />}
       </li>
     ))}
-    <li class="ml-auto text-muted-strong">Paris</li>
+    <li class="ml-auto text-muted-strong">{t("footer.city")}</li>
   </ul>
 </footer>
