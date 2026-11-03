@@ -16,6 +16,9 @@ export const languages = {
     "nav.resume": "CV",
     "nav.contact": "Contact",
     "languageSwitcher.label": "Changer de langue",
+    // Written in the target language: the link carries lang="en"
+    "languageSwitcher.targetCode": "EN",
+    "languageSwitcher.targetName": "English version",
   
     "footer.city": "Paris",
     "copy.label": "Copier l'adresse email",
@@ -118,6 +121,8 @@ export const languages = {
     "nav.resume": "Resume",
     "nav.contact": "Contact",
     "languageSwitcher.label": "Change language",
+    "languageSwitcher.targetCode": "FR",
+    "languageSwitcher.targetName": "Version française",
   
     // Footer and copy button
     "footer.city": "Paris",

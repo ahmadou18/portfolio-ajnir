@@ -1,10 +1,24 @@
 ---
 import Logo from "@/assets/logo.svg";
-import { getLangFromUrl, getLocalizedPath, useTranslations } from "@/i18n/utils";
+import { languages, type Lang } from "@/i18n/ui";
+import {
+  getLangFromUrl,
+  getLocalizedPath,
+  getTranslatedPath,
+  useTranslations,
+} from "@/i18n/utils";
 import { site } from "@/config";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const targetLang = (Object.keys(languages) as Lang[]).find(
+  (otherLang) => otherLang !== lang,
+)!;
+// A 404 has no translated counterpart: link to the other language's home page.
+const isNotFoundPage = /\/404\/?$/.test(Astro.url.pathname);
+const translatedPath = isNotFoundPage
+  ? getLocalizedPath(targetLang, "/")
+  : getTranslatedPath(Astro.url, targetLang);
 
 const navigationLinks = [
   { label: t("nav.projects"), href: getLocalizedPath(lang, "/projects/") },
@@ -52,12 +66,22 @@ function isCurrentPage(href: string) {
       </ul>
     </nav>
 
-    <a
-      href={`mailto:${site.email}`}
-      aria-label={t("header.emailLabel")}
-      class="col-start-2 row-start-1 py-1.5 text-[18px] leading-none sm:col-start-3"
-    >
-      @
-    </a>
+    <div class="col-start-2 row-start-1 flex items-baseline gap-4 sm:col-start-3">
+      <a
+        href={translatedPath}
+        lang={targetLang}
+        hreflang={targetLang}
+        class="py-1.5 leading-none text-muted-strong transition-colors hover:text-ochre focus-visible:text-ochre"
+      >
+        {t("languageSwitcher.targetCode")}<span class="sr-only">, {t("languageSwitcher.targetName")}</span>
+      </a>
+      <a
+        href={`mailto:${site.email}`}
+        aria-label={t("header.emailLabel")}
+        class="py-1.5 text-[18px] leading-none"
+      >
+        @
+      </a>
+    </div>
   </div>
 </header>
