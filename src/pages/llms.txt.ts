@@ -20,7 +20,7 @@ const skills = [
 export const GET: APIRoute = async ({ site }) => {
   if (!site) throw new Error("L'URL du site n'est pas configurée.");
 
-  const projects = await getSortedProjects();
+  const projects = await getSortedProjects("fr");
   const toAbsoluteUrl = (path: string) => new URL(path, site).href;
 
   const projectLines = projects.map(

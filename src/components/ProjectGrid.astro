@@ -1,11 +1,11 @@
 ---
 import ProjectCard from "@/components/ProjectCard.astro";
-import type { CollectionEntry } from "astro:content";
 import type { CoverColor } from "@/components/ProjectCover.astro";
 import { getLangFromUrl, getLocalizedPath } from "@/i18n/utils";
+import type { Project } from "@/lib/projects";
 
 interface Props {
-  projects: CollectionEntry<"projects">[];
+  projects: Project[];
   /** Loads the first card eagerly: use it when the grid is above the fold (LCP). */
   prioritizeFirst?: boolean;
 }

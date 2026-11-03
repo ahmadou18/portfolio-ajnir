@@ -6,7 +6,7 @@ import ProjectGrid from "@/components/ProjectGrid.astro";
 import { getFeaturedProjects } from "@/lib/projects";
 import { site } from "@/config";
 
-const featuredProjects = await getFeaturedProjects();
+const featuredProjects = await getFeaturedProjects("fr");
 const person = {
   "@type": "Person",
   name: site.name,

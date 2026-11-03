@@ -1,19 +1,10 @@
 ---
-import { getCollection, getEntries } from "astro:content";
 import PageHeading from "@/components/PageHeading.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getSortedExperiences } from "@/lib/projects";
 
-const experienceEntries = (await getCollection("experiences")).toSorted(
-  (a, b) => a.data.order - b.data.order,
-);
-
-const experiences = await Promise.all(
-  experienceEntries.map(async (experience) => ({
-    ...experience.data,
-    linkedProjects: await getEntries(experience.data.projects),
-  })),
-);
+const experiences = await getSortedExperiences("fr");
 
 const skillGroups = [
   {

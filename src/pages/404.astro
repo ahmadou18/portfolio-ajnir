@@ -5,7 +5,7 @@ import ProjectCover from "@/components/ProjectCover.astro";
 import { getSortedProjects } from "@/lib/projects";
 import { site } from "@/config";
 
-const projectCount = (await getSortedProjects()).length;
+const projectCount = (await getSortedProjects("fr")).length;
 
 const destinations = [
   {

@@ -7,7 +7,7 @@ import ProjectCover from "@/components/ProjectCover.astro";
 import { getImage } from "astro:assets";
 
 export async function getStaticPaths() {
-  const projects = await getSortedProjects();
+  const projects = await getSortedProjects("fr");
 
   return projects.map((project, index) => ({
     params: { slug: project.id },
